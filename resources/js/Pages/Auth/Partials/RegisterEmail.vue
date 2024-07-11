@@ -1,0 +1,141 @@
+<script setup>
+import { defineEmits } from 'vue'
+import { useForm } from 'laravel-precognition-vue-inertia'
+
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+
+import ErrorMessage from '@/components/ErrorMessage.vue'
+
+const emit = defineEmits(['back'])
+
+const emailForm = useForm('post', route('register'), {
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    terms: false,
+})
+
+const submitEmailForm = () => emailForm.submit({
+    onFinish: () => emailForm.reset('password', 'password_confirmation'),
+})
+
+const back = () => emit('back')
+</script>
+
+<template>
+    <form
+        @submit.prevent="submitEmailForm"
+        class="grid gap-4">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="grid gap-2 content-start">
+                <Label for="firstname">
+                    {{ $t('Firstname') }}
+                </Label>
+
+                <Input
+                    v-model="emailForm.firstname"
+                    @change="emailForm.validate('firstname')"
+                    id="firstname"
+                    placeholder="John"
+                    autocomplete="firstname" />
+
+                <ErrorMessage v-if="emailForm.invalid('firstname')">
+                    {{ emailForm.errors.firstname }}
+                </ErrorMessage>
+            </div>
+
+            <div class="grid gap-2 content-start">
+                <Label for="lastname">
+                    {{ $t('Lastname') }}
+                </Label>
+
+                <Input
+                    v-model="emailForm.lastname"
+                    @change="emailForm.validate('lastname')"
+                    id="lastname"
+                    placeholder="Doe"
+                    autocomplete="lastname" />
+
+                <ErrorMessage v-if="emailForm.invalid('lastname')">
+                    {{ emailForm.errors.lastname }}
+                </ErrorMessage>
+            </div>
+        </div>
+
+        <div class="grid gap-2">
+            <Label for="email">
+                {{ $t('Email') }}
+            </Label>
+
+            <Input
+                v-model="emailForm.email"
+                @change="emailForm.validate('email')"
+                id="email"
+                type="email"
+                placeholder="support@orvea.io"
+                autocomplete="username" />
+
+            <ErrorMessage v-if="emailForm.invalid('email')">
+                {{ emailForm.errors.email }}
+            </ErrorMessage>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="grid gap-2 content-start">
+                <Label for="password">
+                    {{ $t('Password') }}
+                </Label>
+
+                <Input
+                    v-model="emailForm.password"
+                    @change="emailForm.validate('password')"
+                    id="password"
+                    type="password" />
+
+                <ErrorMessage v-if="emailForm.invalid('password')">
+                    {{ emailForm.errors.password }}
+                </ErrorMessage>
+            </div>
+
+            <div class="grid gap-2 content-start">
+                <Label for="password_confirmation">
+                    {{ $t('Password confirmation') }}
+                </Label>
+
+                <Input
+                    v-model="emailForm.password_confirmation"
+                    @change="emailForm.validate('password_confirmation')"
+                    id="password_confirmation"
+                    type="password" />
+
+                <ErrorMessage v-if="emailForm.invalid('password_confirmation')">
+                    {{ emailForm.errors.password_confirmation }}
+                </ErrorMessage>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-2">
+            <Checkbox v-model:checked="emailForm.terms" id="terms" />
+            <Label for="terms">
+                {{ $t('I accept the terms and conditions') }}
+            </Label>
+        </div>
+
+        <Button :disabled="emailForm.processing" class="w-full">
+            {{ $t('Sign up') }}
+        </Button>
+
+        <Button
+            @click="back"
+            type="button"
+            variant="outline"
+            class="w-full">
+            {{ $t('Back') }}
+        </Button>
+    </form>
+</template>

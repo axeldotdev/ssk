@@ -1,0 +1,13 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    scanFiles:
+        - _ide_helper_models.php
+
+    paths:
+        - app/
+
+    level: 5
+
+    checkOctaneCompatibility: true
