@@ -42,7 +42,7 @@
         "socialiteproviders/microsoft": "^4.3",
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-activitylog": "^4.8",
-        "spatie/laravel-backup": "^8.8",
+        "spatie/laravel-backup": "^9.0",
         "spatie/laravel-csp": "^2.10",
         "spatie/laravel-google-fonts": "^1.4",
         "spatie/laravel-health": "^1.29",
