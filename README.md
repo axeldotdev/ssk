@@ -30,6 +30,7 @@ By default the database is **SQLite** and the session, cache and jobs are stored
 - Companies create and edit forms
 - Command bar with search and shortcuts
 - Notification center
+- Third party apps integrations
 - Tests
 
 ## Available Features
@@ -41,7 +42,7 @@ By default the database is **SQLite** and the session, cache and jobs are stored
 - Onboarding (account, company, collaborators)
 - Collaborators invitation by email or phone
 - Multiple tenants (companies)
-- Sessions management
+- Active sessions management
 - Company transfer ownership
 - 2FA
 - API via token

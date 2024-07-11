@@ -1,14 +1,17 @@
 {
-    "name": "ssk/ssk",
+    "name": "axeldotdev/ssk",
     "type": "project",
     "description": "The SaaS Starter Kit (SSK) help you build your app quickly.",
     "keywords": [
         "laravel",
+        "vue",
+        "inertia",
+        "tailwindcss",
+        "shadcn",
         "saas",
-        "starter kit",
-        "ssk"
+        "starter-kit"
     ],
-    "homepage": "https://github.com/ssk/ssk",
+    "homepage": "https://github.com/axeldotdev/ssk",
     "license": "MIT",
     "authors": [
         {
