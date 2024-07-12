@@ -1,3 +1,18 @@
+<p align="center">
+    <a href="https://php.net">
+        <img alt="PHP 8.2" src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php">
+    </a>
+    <a href="https://laravel.com">
+        <img alt="Laravel v11.x" src="https://img.shields.io/badge/Laravel-v11.x-FF2D20?style=for-the-badge&logo=laravel">
+    </a>
+    <a href="https://inertiajs.com/">
+        <img alt="Inertia v1.x" src="https://img.shields.io/badge/Inertia-v1.x-846CEE?style=for-the-badge">
+    </a>
+    <a href="https://vuejs.org/">
+        <img alt="Vue v3.x" src="https://img.shields.io/badge/Vue-v3.x-42B883?style=for-the-badge">
+    </a>
+</p>
+
 # SaaS Starter Kit (SSK)
 
 The goal of SSK is to help you build your app quickly and it brings you a ton of cool features on top of Laravel Breeze.
@@ -148,6 +163,14 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Need Help?
+
+🐞 If you spot a bug, please [submit a detailed issue](https://github.com/axeldotdev/ssk/issues/new?assignees=&labels=bug&template=bug_report.md), and wait for assistance.
+
+🤔 If you have a question or feature request, please [start a new discussion](https://github.com/axeldotdev/ssk/discussions/new). For quick help, ask questions in the appropriate channel.
+
+🔐 If you discover a vulnerability, please review [our security policy](../../security/policy).
 
 ## Security Vulnerabilities
 
