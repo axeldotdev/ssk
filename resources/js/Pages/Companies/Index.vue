@@ -10,6 +10,7 @@ import {
     ChevronsRight,
     ChevronLeft,
     ChevronRight,
+    Search,
 } from 'lucide-vue-next'
 
 import { Button } from '@/components/ui/button'
@@ -78,41 +79,43 @@ const submitSearchForm = () => {
 
         <Header>
             {{ $t('Companies') }}
-        </Header>
 
-        <div class="mx-auto grid w-full max-w-6xl gap-2">
-            <div class="flex justify-between items-center gap-4 mb-4">
-                <Input
-                    @input.bounce="submitSearchForm"
-                    v-model="searchForm.name"
-                    placeholder="Search companies..."
-                    class="w-full" />
-
+            <template v-slot:actions>
                 <Button as-child>
                     <Link :href="route('companies.create')">
                         {{ $t('Create company') }}
                     </Link>
                 </Button>
+            </template>
+        </Header>
+
+        <div v-if="companies.data.length" class="mx-auto grid w-full max-w-6xl gap-2">
+            <div class="flex justify-between items-center gap-4 mb-4">
+                <div class="relative w-full max-w-sm items-center">
+                    <Input
+                        @input.bounce="submitSearchForm"
+                        v-model="searchForm.name"
+                        placeholder="Search companies..."
+                        class="pl-10" />
+                    <span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
+                        <Search class="size-5 text-neutral-500" />
+                    </span>
+                </div>
             </div>
 
             <template v-for="company in companies.data" :key="company.uuid">
-                <Card>
+                <Card v-if="company.can.view">
                     <CardContent class="grid grid-cols-3 gap-4 p-4">
                         <Link
-                            v-if="company.can.view"
                             :href="route('companies.show', company)"
                             class="text-lg font-semibold text-neutral-800">
                             {{ company.name }}
                         </Link>
-                        <div class="">
-                            <div
-                                v-if="company.user"
-                                class="font-medium text-neutral-800">
+                        <div v-if="company.user">
+                            <div class="font-medium text-neutral-800">
                                 {{ company.user.fullname }}
                             </div>
-                            <div
-                                v-if="company.user"
-                                class="font-medium text-sm text-neutral-500">
+                            <div class="font-medium text-sm text-neutral-500">
                                 {{ company.user.email }}
                             </div>
                         </div>
@@ -172,6 +175,21 @@ const submitSearchForm = () => {
                     </PaginationLast>
                 </PaginationList>
             </Pagination>
+        </div>
+
+        <div v-else class="mx-auto grid w-full max-w-6xl gap-2">
+            <Card>
+                <CardContent class="flex flex-col justify-center items-center min-h-64 pt-6">
+                    <h2 class="mb-6 text-lg font-semibold text-neutral-800">
+                        {{ $t('Create a company and invite your collaborators.') }}
+                    </h2>
+                    <Button as-child>
+                        <Link :href="route('tokens.create')">
+                            {{ $t('Create company') }}
+                        </Link>
+                    </Button>
+                </CardContent>
+            </Card>
         </div>
     </AuthenticatedLayout>
 </template>

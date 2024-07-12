@@ -103,7 +103,18 @@
 
     "Switch company": "Changer d'entreprise",
 
+    "API tokens": "Jetons API",
+    "Create token": "Créer un jeton",
+    "Last used at": "Dernière utilisation le",
+    "Expires at": "Expire le",
+    "Revoke": "Révoquer",
+    "This action cannot be undone. This will permanently delete your token.": "Cette action est irréversible. Cela supprimera définitivement votre jeton.",
+    "You need to use the API? Create a token here.": "Vous avez besoin d'utiliser l'API ? Créez un jeton ici.",
+
+    "API documentation": "Documentation API",
+
     "Companies": "Entreprises",
+    "Create a company and invite your collaborators.": "Créez une entreprise et invitez vos collaborateurs.",
 
     "Email": "Email",
     "Phone": "Téléphone",
@@ -122,13 +133,17 @@
     "Users": "Utilisateurs",
     "User": "Utilisateur",
 
+    "Are you absolutely sure?": "Êtes-vous absolument sûr ?",
     "Save": "Sauvegarder",
     "Create": "Créer",
     "Back": "Retour",
     "Skip": "Passer",
+    "Cancel": "Annuler",
     "Open the menu": "Ouvrir le menu",
     "Yes": "Oui",
     "No": "Non",
+    "Never": "Jamais",
     "Verified": "Vérifié",
-    "Onboarded": "Onboardé"
+    "Onboarded": "Onboardé",
+    "Search everything": "Rechercher partout"
 }

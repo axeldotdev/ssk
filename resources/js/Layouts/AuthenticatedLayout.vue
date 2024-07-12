@@ -2,15 +2,30 @@
 import { Link, usePage, router } from '@inertiajs/vue3';
 
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
-import { Search, LayoutDashboard, Building2, CircleCheck } from 'lucide-vue-next'
+import {
+    Search,
+    LayoutDashboard,
+    Building2,
+    CircleCheck,
+} from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+
+import NavLink from '@/components/NavLink.vue'
 
 const appName = usePage().props.appName
 const can = usePage().props.auth.can
 const companies = usePage().props.auth.companies
 const user = usePage().props.auth.user
 const currentCompany = usePage().props.auth.currentCompany
+const currentRoute = usePage().props.ziggy.currentRoute
 
 const switchCompany = (uuid) => {
     router.put(route('assignment.update'), {
@@ -22,6 +37,8 @@ const switchCompany = (uuid) => {
 }
 
 const initials = (name) => name.split(' ').map(word => word[0]).join('')
+
+const isCurrentRoute = (route) => currentRoute === route
 </script>
 
 <template>
@@ -64,13 +81,23 @@ const initials = (name) => name.split(' ').map(word => word[0]).join('')
                         </template>
                         <DropdownMenuSeparator v-if="companies.length > 1" />
                         <DropdownMenuItem as-child>
-                            <Link :href="route('profile.edit')" class="w-full cursor-pointer">
+                            <Link :href="route('profile.edit')" :class="[isCurrentRoute('profile.edit') ? 'bg-neutral-100' : '', 'w-full cursor-pointer']">
                                 {{ $t('My account') }}
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem as-child>
-                            <Link :href="route('company.edit')" class="w-full cursor-pointer">
+                            <Link :href="route('company.edit')" :class="[isCurrentRoute('company.edit') ? 'bg-neutral-100' : '', 'w-full cursor-pointer']">
                                 {{ $t('My company') }}
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem as-child>
+                            <Link :href="route('tokens.index')" :class="[isCurrentRoute('tokens.index') ? 'bg-neutral-100' : '', 'w-full cursor-pointer']">
+                                {{ $t('API tokens') }}
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem as-child>
+                            <Link :href="route('documentation.get-started')" :class="[isCurrentRoute('documentation.get-started') ? 'bg-neutral-100' : '', 'w-full cursor-pointer']">
+                                {{ $t('API documentation') }}
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -96,14 +123,14 @@ const initials = (name) => name.split(' ').map(word => word[0]).join('')
             </div>
 
             <nav class="grow flex flex-col gap-1">
-                <Link :href="route('dashboard')" class="inline-flex items-center justify-start whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 h-10 px-4 py-2">
+                <NavLink :href="route('dashboard')" :isActive="isCurrentRoute('dashboard')">
                     <LayoutDashboard class="w-5 h-5 mr-2" />
                     {{ $t('Dashboard') }}
-                </Link>
-                <Link v-if="can.viewAny.companies" :href="route('companies.index')" class="inline-flex items-center justify-start whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 h-10 px-4 py-2">
+                </NavLink>
+                <NavLink v-if="can.viewAny.companies" :href="route('companies.index')" :isActive="isCurrentRoute('companies.index')">
                     <Building2 class="w-5 h-5 mr-2" />
                     {{ $t('Companies') }}
-                </Link>
+                </NavLink>
             </nav>
         </div>
 

@@ -58,6 +58,16 @@ defineProps({
                                 {{ $t('My company') }}
                             </Link>
                         </DropdownMenuItem>
+                        <DropdownMenuItem as-child>
+                            <Link :href="route('tokens.index')">
+                                {{ $t('API tokens') }}
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem as-child>
+                            <Link :href="route('documentation.get-started')">
+                                {{ $t('API documentation') }}
+                            </Link>
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </BreadcrumbItem>

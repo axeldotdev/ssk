@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CurrentCompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Spatie\Health\Http\Controllers\HealthCheckResultsController;
@@ -31,6 +32,19 @@ Route::middleware([
         ->name('company.edit');
     Route::put('company', [CurrentCompanyController::class, 'update'])
         ->name('company.update');
+
+    Route::get('tokens', [TokenController::class, 'index'])
+        ->name('tokens.index');
+    Route::get('tokens/create', [TokenController::class, 'create'])
+        ->name('tokens.create');
+    Route::post('tokens', [TokenController::class, 'store'])
+        ->name('tokens.store');
+    Route::delete('tokens/{token}', [TokenController::class, 'destroy'])
+        ->name('tokens.destroy');
+
+    Route::get('documentation/get-started', function () {
+        return Inertia::render('Documentation/GetStarted');
+    })->name('documentation.get-started');
 
     Route::get('companies', [CompanyController::class, 'index'])
         ->name('companies.index');

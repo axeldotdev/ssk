@@ -3,12 +3,15 @@ import { Head, Link } from '@inertiajs/vue3'
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
-import { ChevronDown } from 'lucide-vue-next'
+import { ChevronDown, Slash } from 'lucide-vue-next'
 
 import {
     BreadcrumbItem,
+    BreadcrumbLink,
     BreadcrumbPage,
+    BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -17,30 +20,20 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import Breadcrumb from '@/components/Breadcrumb.vue'
-import CompanyInformations from '@/Pages/Company/Partials/CompanyInformations.vue'
-import DeleteCompany from '@/Pages/Company/Partials/DeleteCompany.vue'
 import Header from '@/components/Header.vue'
-import Members from '@/Pages/Company/Partials/Members.vue'
-import TransferCompany from '@/Pages/Company/Partials/TransferCompany.vue'
-
-defineProps({
-    members: {
-        type: Array,
-    },
-})
 </script>
 
 <template>
-    <Head :title="$t('My company')"/>
+    <Head :title="`${$t('API documentation')} - ${$t('Get started')}`"/>
 
     <AuthenticatedLayout>
         <Breadcrumb>
             <BreadcrumbItem>
                 <DropdownMenu>
                     <DropdownMenuTrigger class="flex items-center gap-1">
-                        <BreadcrumbPage>
-                            {{ $t('My company') }}
-                        </BreadcrumbPage>
+                        <BreadcrumbLink as-child>
+                            {{ $t('API documentation') }}
+                        </BreadcrumbLink>
                         <ChevronDown class="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start">
@@ -50,30 +43,38 @@ defineProps({
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem as-child>
-                            <Link :href="route('tokens.index')">
-                                {{ $t('API tokens') }}
+                            <Link :href="route('company.edit')">
+                                {{ $t('My company') }}
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem as-child>
-                            <Link :href="route('documentation.get-started')">
-                                {{ $t('API documentation') }}
+                            <Link :href="route('tokens.index')">
+                                {{ $t('API tokens') }}
                             </Link>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </BreadcrumbItem>
+            <BreadcrumbSeparator>
+                <Slash />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+                <BreadcrumbPage>
+                    {{ $t('Get started') }}
+                </BreadcrumbPage>
+            </BreadcrumbItem>
         </Breadcrumb>
 
         <Header>
-            {{ $t('My company') }}
+            {{ $t('Get started') }}
+
+            <template v-slot:actions>
+                <Button as-child>
+                    <Link :href="route('tokens.create')">
+                        {{ $t('Create token') }}
+                    </Link>
+                </Button>
+            </template>
         </Header>
-
-        <CompanyInformations></CompanyInformations>
-
-        <Members :members="members"></Members>
-
-        <TransferCompany :members="members"></TransferCompany>
-
-        <DeleteCompany></DeleteCompany>
     </AuthenticatedLayout>
 </template>
