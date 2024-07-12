@@ -1,4 +1,5 @@
 <script setup>
+import { defineEmits } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { useForm } from 'laravel-precognition-vue-inertia'
 
@@ -22,6 +23,8 @@ import {
 
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
+const emit = defineEmits(['submit'])
+
 const user = usePage().props.auth.user
 
 const countries = usePage().props.countries
@@ -36,10 +39,7 @@ const accountForm = useForm('post', route('onboarding.account'), {
 })
 
 const submitAccountForm = () => accountForm.submit({
-    onFinish: () => {
-        currentTab.value = 'company'
-        activeTab.value = 'company'
-    },
+    onFinish: () => emit('submit'),
 })
 </script>
 

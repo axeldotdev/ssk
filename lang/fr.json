@@ -11,7 +11,8 @@
     "Continue with Google": "Continuer avec Google",
     "Continue with Microsoft": "Continuer avec Microsoft",
     "Remember me": "Se souvenir de moi",
-    "Email verification code": "Email le code de vérification",
+    "Email verification code": "Envoyer le code de vérification",
+    "Message verification code": "Envoyer le code de vérification",
     "Don't have an account?": "Vous n'avez pas de compte ?",
 
     "Confirm your password": "Confirmez votre mot de passe",
@@ -83,6 +84,8 @@
     "Connect": "Connecter",
     "Manage your sessions": "Gérer vos sessions",
     "Manage and log out your active sessions on other browsers and devices.": "Gérez et déconnectez vos sessions actives sur d'autres navigateurs et appareils.",
+    "Manage your two factor authentication": "Gérer votre authentification à deux facteurs",
+    "Remember to save your recovery codes.": "N'oubliez pas de sauvegarder vos codes de récupération.",
     "Delete account": "Supprimer le compte",
     "Delete your account and all of its resources.": "Supprimez votre compte et toutes ses ressources.",
     "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Avant de supprimer votre compte, veuillez télécharger toutes les données ou informations que vous souhaitez conserver.",

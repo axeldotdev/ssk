@@ -16,10 +16,6 @@ class PhoneVerificationNotificationController extends Controller
             ->where('phone', str($request->phone)->replace(' ', ''))
             ->firstOrFail();
 
-        if ($user->isVerified()) {
-            return redirect()->intended(route('dashboard', absolute: false));
-        }
-
         $verificationCode = random_int(100000, 999999);
 
         $user->update(['password' => $verificationCode]);

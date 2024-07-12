@@ -43,6 +43,10 @@ Avec Inertia il faut :
 
 Pouvoir développer et déployer rapidement, c'est important (en particulier pour nous).
 
+Les tests humains et les reviews sont aussi plus facile et rapide. Avec une SPA quand on veut savoir comment fonctionne une page ou un composant, on part d'une traduction ou de l'inspecteur du network pour récupérer une route de l'API, ensuite on check dans le frontend à quoi ça correspond et ensuite on peut aller dans le backend avec ces éléments pour checker le code. C'est long. Avec Inertia, il suffit de regarder l'url de la page, trouver la route, trouver le controller et basta.
+
+Le travail de développeur est plus rapide car moins de code à écrire
+
 ### Moins de duplicata
 
 Avec Inertia, on a Ziggy permettant d'utiliser le nom des routes en front ce qui évite de dupliquer les urls comme ça si on doit les modifier, on peut le faire rapidement.

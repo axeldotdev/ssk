@@ -23,6 +23,7 @@ import Header from '@/components/Header.vue'
 import PersonalInformations from '@/Pages/Profile/Partials/PersonalInformations.vue'
 import Sessions from '@/Pages/Profile/Partials/Sessions.vue'
 import SetPassword from '@/Pages/Profile/Partials/SetPassword.vue'
+import TwoFactorAuthentication from '@/Pages/Profile/Partials/TwoFactorAuthentication.vue'
 import UpdatePassword from '@/Pages/Profile/Partials/UpdatePassword.vue'
 
 defineProps({
@@ -75,6 +76,8 @@ defineProps({
         <ConnectedAccounts :socialstream="socialstream"></ConnectedAccounts>
 
         <Sessions></Sessions>
+
+        <TwoFactorAuthentication></TwoFactorAuthentication>
 
         <DeleteAccount></DeleteAccount>
     </AuthenticatedLayout>

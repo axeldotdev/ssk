@@ -1,4 +1,5 @@
 <script setup>
+import { defineEmits } from 'vue'
 import { useForm } from 'laravel-precognition-vue-inertia'
 
 import { Button } from '@/components/ui/button'
@@ -14,15 +15,14 @@ import { Label } from '@/components/ui/label'
 
 import ErrorMessage from '@/components/ErrorMessage.vue'
 
+const emit = defineEmits(['submit'])
+
 const companyForm = useForm('post', route('onboarding.company'), {
     name: '',
 })
 
 const submitCompanyForm = () => companyForm.submit({
-    onFinish: () => {
-        currentTab.value = 'collaborators'
-        activeTab.value = 'collaborators'
-    },
+    onFinish: () => emit('submit'),
 })
 </script>
 

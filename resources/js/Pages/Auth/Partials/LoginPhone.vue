@@ -5,13 +5,6 @@ import { useForm } from 'laravel-precognition-vue-inertia'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -33,8 +26,8 @@ const phoneForm = useForm('post', route('login'), {
     remember: false,
 })
 
-const verificationForm = useForm('post', route('verification.send'), {
-    phone: phoneForm.phone,
+const verificationForm = useForm('post', route('phone-verification.send'), {
+    phone: '',
 })
 
 const submitPhoneForm = () => phoneForm.transform((data) => ({
@@ -44,7 +37,9 @@ const submitPhoneForm = () => phoneForm.transform((data) => ({
     onFinish: () => phoneForm.reset('password'),
 })
 
-const submitVerificationForm = () => verificationForm.submit({
+const submitVerificationForm = () => verificationForm.transform((data) => ({
+    phone: phoneForm.phone,
+})).submit({
     onFinish: () => {
         verificationCodeSent.value = true
         toast.success('We have sent your verification code!', {
@@ -118,7 +113,7 @@ const back = () => emit('back')
             @click="submitVerificationForm"
             type="button"
             class="w-full">
-            {{ $t('Email verification code') }}
+            {{ $t('Message verification code') }}
         </Button>
 
         <Button

@@ -11,6 +11,10 @@ import {
     TabsTrigger,
 } from '@/components/ui/tabs'
 
+import OnboardingAccount from '@/Pages/Auth/Partials/OnboardingAccount.vue'
+import OnboardingCompany from '@/Pages/Auth/Partials/OnboardingCompany.vue'
+import OnboardingCollaborators from '@/Pages/Auth/Partials/OnboardingCollaborators.vue'
+
 const props = defineProps({
     signUpMethod: {
         type: String,
@@ -31,6 +35,16 @@ onMounted(() => {
         activeTab.value = 'collaborators'
     }
 })
+
+const submitAccountForm = () => {
+    currentTab.value = 'company'
+    activeTab.value = 'company'
+}
+
+const submitCompanyForm = () => {
+    currentTab.value = 'collaborators'
+    activeTab.value = 'collaborators'
+}
 </script>
 
 <template>
@@ -54,10 +68,10 @@ onMounted(() => {
                 </TabsTrigger>
             </TabsList>
             <TabsContent value="account">
-                <OnboardingAccount></OnboardingAccount>
+                <OnboardingAccount @submit="submitAccountForm"></OnboardingAccount>
             </TabsContent>
             <TabsContent value="company">
-                <OnboardingCompany></OnboardingCompany>
+                <OnboardingCompany @submit="submitCompanyForm"></OnboardingCompany>
             </TabsContent>
             <TabsContent value="collaborators">
                 <OnboardingCollaborators></OnboardingCollaborators>
