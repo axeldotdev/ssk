@@ -12,6 +12,8 @@
 | I18n system | 1 | 2* | *We can also use the unique system with SPA. |
 | SSR | 1 | 0 | |
 | Request validation | 1 | 1 | We can use Precognition with both. |
+| Stores | 0* | 1 | We don't need them with Inertia. |
+| API | 0* | 1 | We don't need it with Inertia except if we do a specific API for the mobile app. |
 
 ## Autre choses
 
@@ -45,7 +47,7 @@ Pouvoir développer et déployer rapidement, c'est important (en particulier pou
 
 Les tests humains et les reviews sont aussi plus facile et rapide. Avec une SPA quand on veut savoir comment fonctionne une page ou un composant, on part d'une traduction ou de l'inspecteur du network pour récupérer une route de l'API, ensuite on check dans le frontend à quoi ça correspond et ensuite on peut aller dans le backend avec ces éléments pour checker le code. C'est long. Avec Inertia, il suffit de regarder l'url de la page, trouver la route, trouver le controller et basta.
 
-Le travail de développeur est plus rapide car moins de code à écrire
+Le travail de développeur est plus rapide car moins de code à écrire.
 
 ### Moins de duplicata
 
