@@ -43,17 +43,17 @@ const getAccountForProvider = (provider) => props.socialstream.connectedAccounts
                                         <ProviderIcon :provider="provider" classes="h-6 w-6 me-2" />
 
                                         <div class="ms-2">
-                                            <div class="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                                            <div class="text-sm font-semibold text-neutral-600 dark:text-neutral-400">
                                                 {{ provider.name }}
                                             </div>
 
                                             <div
                                                 v-if="(hasAccountForProvider(provider) ? getAccountForProvider(provider)?.created_at : '') !== null"
-                                                class="text-xs text-gray-500">
+                                                class="text-xs text-neutral-500">
                                                 {{ $t('Connected') }} {{ hasAccountForProvider(provider) ? getAccountForProvider(provider)?.created_at : '' }}
                                             </div>
 
-                                            <div v-else class="text-xs text-gray-500">
+                                            <div v-else class="text-xs text-neutral-500">
                                                 {{ $t('Not connected') }}
                                             </div>
                                         </div>
