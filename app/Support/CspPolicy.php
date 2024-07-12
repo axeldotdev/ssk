@@ -21,8 +21,8 @@ class CspPolicy extends Policy
         return $this
             ->addDirective(Directive::BASE, 'self')
             ->addDirective(Directive::FORM_ACTION, [
-                'orvea.app',
-                'orvea.test',
+                '127.0.0.1:8000',
+                'ssk.test',
             ])
             ->addDirective(Directive::IMG, [
                 '*',
@@ -35,9 +35,9 @@ class CspPolicy extends Policy
     public function addStyleDirectives(): Policy
     {
         return $this->addDirective(Directive::STYLE, [
-            'orvea.app',
-            'orvea.test',
-            'orvea.test:5173',
+            '127.0.0.1:8000',
+            'ssk.test',
+            'ssk.test:5173',
             'unsafe-inline',
         ]);
     }
@@ -47,9 +47,9 @@ class CspPolicy extends Policy
         return $this
             ->addNonceForDirective(Directive::SCRIPT)
             ->addDirective(Directive::SCRIPT, [
-                'orvea.app',
-                'orvea.test',
-                'orvea.test:5173',
+                '127.0.0.1:8000',
+                'ssk.test',
+                'ssk.test:5173',
                 'cdn.usefathom.com',
                 'unsafe-eval',
                 'unsafe-inline',
@@ -59,9 +59,9 @@ class CspPolicy extends Policy
     public function addFontDirectives(): Policy
     {
         return $this->addDirective(Directive::FONT, [
-            'orvea.app',
-            'orvea.test',
-            'orvea.test:5173',
+            '127.0.0.1:8000',
+            'ssk.test',
+            'ssk.test:5173',
             'unsafe-inline',
             'data:',
         ]);
