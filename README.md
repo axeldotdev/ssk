@@ -3,8 +3,18 @@
 </p>
 
 <p align="center">
-    <a href="https://php.net"><img alt="PHP 8.2" src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php"></a><a href="https://laravel.com">
-        <img alt="Laravel v11.x" src="https://img.shields.io/badge/Laravel-v11.x-FF2D20?style=for-the-badge&logo=laravel"></a><a href="https://inertiajs.com/"><img alt="Inertia v1.x" src="https://img.shields.io/badge/Inertia-v1.x-846CEE?style=for-the-badge"></a><a href="https://vuejs.org/"><img alt="Vue v3.x" src="https://img.shields.io/badge/Vue-v3.x-42B883?style=for-the-badge"></a>
+    <a href="https://php.net">
+        <img alt="PHP 8.2" src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php">
+    </a>
+    <a href="https://laravel.com">
+        <img alt="Laravel v11.x" src="https://img.shields.io/badge/Laravel-v11.x-FF2D20?style=for-the-badge&logo=laravel">
+    </a>
+    <a href="https://inertiajs.com/">
+        <img alt="Inertia v1.x" src="https://img.shields.io/badge/Inertia-v1.x-846CEE?style=for-the-badge">
+    </a>
+    <a href="https://vuejs.org/">
+        <img alt="Vue v3.x" src="https://img.shields.io/badge/Vue-v3.x-42B883?style=for-the-badge">
+    </a>
 </p>
 
 # SaaS Starter Kit (SSK)
