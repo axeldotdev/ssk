@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "811a46b2158f5fd847059abf6d160a38",
+    "content-hash": "ae2a95c9c8617c247bc654b1b0db0b77",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -7848,16 +7848,16 @@
         },
         {
             "name": "socialiteproviders/microsoft",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Microsoft.git",
-                "reference": "1a9928cb3091698c5c5ad108f5ff3b8a594e84fc"
+                "reference": "9f55e544f183c36096a14b2e61b5d6c9dc23961e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Microsoft/zipball/1a9928cb3091698c5c5ad108f5ff3b8a594e84fc",
-                "reference": "1a9928cb3091698c5c5ad108f5ff3b8a594e84fc",
+                "url": "https://api.github.com/repos/SocialiteProviders/Microsoft/zipball/9f55e544f183c36096a14b2e61b5d6c9dc23961e",
+                "reference": "9f55e544f183c36096a14b2e61b5d6c9dc23961e",
                 "shasum": ""
             },
             "require": {
@@ -7894,7 +7894,7 @@
                 "issues": "https://github.com/socialiteproviders/providers/issues",
                 "source": "https://github.com/socialiteproviders/providers"
             },
-            "time": "2024-07-09T22:42:09+00:00"
+            "time": "2024-07-12T02:43:55+00:00"
         },
         {
             "name": "spatie/color",
