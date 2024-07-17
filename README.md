@@ -154,6 +154,12 @@ SSK use some of the great packages  of the Laravel ecosystem to help you build t
 
 - Prettier
 
+## Upgrading
+
+If you need to upgrade your project to the newer version of SSk, we recommend you to follow [the upgrading guide](UPGRADING.md).
+
+But! SSK is a starter kit and once you use it to init your project, the code is yours and you don't really need to upgrade to follow the newer version.
+
 ## Testing
 
 ```bash
