@@ -37,7 +37,9 @@ npm install
 npm run build # npm run dev
 ```
 
-By default the database is **SQLite** and the session, cache and jobs are stored in it. It allows you to start building your app quickly and focus on the system later.
+By default the database is **SQLite** and the session, cache and queues are stored in it. It allows you to start building your app quickly and focus on the system later.
+
+Horizon is installed and configure so you can switch your queues to redis very quickly.
 
 **SSK** is just a wrapper around **Laravel Breeze** who is a wrapper around **Laravel**. You have all the power to modify it to suit your need.
 
