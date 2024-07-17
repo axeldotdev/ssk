@@ -2,8 +2,12 @@
 
 namespace App\Enums;
 
+use App\Concerns\HasList;
+
 enum Timezone: string
 {
+    use HasList;
+
     case EuropeAmsterdam = 'europe-amsterdam';
     case EuropeAndorra = 'europe-andorra';
     case EuropeAstrakhan = 'europe-astrakhan';
@@ -62,17 +66,6 @@ enum Timezone: string
     case EuropeWarsaw = 'europe-warsaw';
     case EuropeZagreb = 'europe-zagreb';
     case EuropeZurich = 'europe-zurich';
-
-    public static function list(): array
-    {
-        $timezones = [];
-
-        foreach (self::cases() as $timezone) {
-            $timezones[$timezone->value] = $timezone->name();
-        }
-
-        return $timezones;
-    }
 
     public function name(): string
     {

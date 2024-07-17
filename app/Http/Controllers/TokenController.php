@@ -16,6 +16,7 @@ class TokenController extends Controller
     {
         return Inertia::render('Tokens/Index', [
             'tokens' => $request->user()->tokens()->paginate(),
+            'token' => $request->session()->get('token'),
         ]);
     }
 
@@ -28,9 +29,7 @@ class TokenController extends Controller
     {
         $token = $request->user()->createToken($request->validated());
 
-        // send the token to redirect view
-
-        return Redirect::route('tokens.index');
+        return Redirect::route('tokens.index')->with(['token' => $token]);
     }
 
     public function destroy(PersonalAccessToken $token): RedirectResponse

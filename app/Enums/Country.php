@@ -2,21 +2,13 @@
 
 namespace App\Enums;
 
+use App\Concerns\HasList;
+
 enum Country: string
 {
+    use HasList;
+
     case France = 'france';
-
-    public static function list(): array
-    {
-        $countries = [];
-
-        foreach (self::cases() as $country) {
-            $countries[$country->value] = $country->flag()
-                . ' ' . $country->name();
-        }
-
-        return $countries;
-    }
 
     public function name(): string
     {
@@ -37,5 +29,10 @@ enum Country: string
         return match ($this) {
             self::France => Timezone::EuropeParis,
         };
+    }
+
+    public function label(): string
+    {
+        return $this->flag() . ' ' . $this->name();
     }
 }

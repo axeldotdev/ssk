@@ -2,21 +2,14 @@
 
 namespace App\Enums;
 
+use App\Concerns\HasList;
+
 enum Locale: string
 {
+    use HasList;
+
     case EN = 'en';
     case FR = 'fr';
-
-    public static function list(): array
-    {
-        $locales = [];
-
-        foreach (self::cases() as $locale) {
-            $locales[$locale->value] = $locale->flag() . ' ' . $locale->name();
-        }
-
-        return $locales;
-    }
 
     public function name(): string
     {
@@ -32,5 +25,10 @@ enum Locale: string
             self::EN => '🇬🇧',
             self::FR => '🇫🇷',
         };
+    }
+
+    public function label(): string
+    {
+        return $this->flag() . ' ' . $this->name();
     }
 }

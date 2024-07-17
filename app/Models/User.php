@@ -6,6 +6,9 @@ use App\Concerns\HasUuid;
 use App\Enums\Country;
 use App\Enums\Locale;
 use App\Enums\Timezone;
+use App\Events\UserCreated;
+use App\Events\UserDeleted;
+use App\Events\UserUpdated;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 use Filament\Panel;
@@ -36,6 +39,13 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    /** @return array<string, string> */
+    protected $dispatchesEvents = [
+        'created' => UserCreated::class,
+        'updated' => UserUpdated::class,
+        'deleted' => UserDeleted::class,
     ];
 
     public function allCompanies(): Collection

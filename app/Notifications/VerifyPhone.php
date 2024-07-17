@@ -12,7 +12,8 @@ class VerifyPhone extends Notification
 
     public function __construct(
         public string|int $verificationCode,
-    ) {}
+    ) {
+    }
 
     /** @return array<int, string> */
     public function via(): array

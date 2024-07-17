@@ -14,7 +14,8 @@ class InviteCollaborator extends Notification
 
     public function __construct(
         public CompanyInvitation $invitation,
-    ) {}
+    ) {
+    }
 
     /** @return array<int, string> */
     public function via(): array

@@ -24,7 +24,6 @@ return new class() extends Migration
             $table->string('phone')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
-            $table->text('picture_path')->nullable();
             $table->string('country')->nullable();
             $table->string('locale')->default(Locale::EN->value);
             $table->string('timezone')->default(Timezone::EuropeLondon->value);

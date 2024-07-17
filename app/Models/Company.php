@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Concerns\HasUuid;
+use App\Events\CompanyCreated;
+use App\Events\CompanyDeleted;
+use App\Events\CompanyUpdated;
 use App\Notifications\InviteCollaborator;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +31,13 @@ class Company extends Model implements Auditable, HasMedia
 
     /** @return array<int, string> */
     protected $appends = ['can'];
+
+    /** @return array<string, string> */
+    protected $dispatchesEvents = [
+        'created' => CompanyCreated::class,
+        'updated' => CompanyUpdated::class,
+        'deleted' => CompanyDeleted::class,
+    ];
 
     public function allUsers(): Collection
     {
