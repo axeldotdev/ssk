@@ -14,17 +14,15 @@ class EnsureUserIsAssigned
         Request $request,
         Closure $next,
     ): Response|RedirectResponse|null {
-        if ($request->user()->allCompanies()->count() === 1) {
-            $request->user()->forceFill([
-                'current_company_id' => $request->user()->allCompanies()
-                    ->first()
-                    ->id,
-            ])->saveQuietly();
-
+        if ($request->user()->currentCompany) {
             return $next($request);
         }
 
-        if ($request->user()->currentCompany) {
+        if ($request->user()->allCompanies()->count() === 1) {
+            $request->user()->switchCompany(
+                $request->user()->allCompanies()->first(),
+            );
+
             return $next($request);
         }
 

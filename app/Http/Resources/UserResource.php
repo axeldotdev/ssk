@@ -5,6 +5,9 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin \App\Models\User
+ */
 class UserResource extends JsonResource
 {
     /** @return array<string, mixed> */
@@ -24,7 +27,9 @@ class UserResource extends JsonResource
             'onboarded_at' => $this->onboarded_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'companies' => CompanyResource::collection($this->whenLoaded('companies')),
+            'companies' => CompanyResource::collection(
+                $this->whenLoaded('companies'),
+            ),
         ];
     }
 }

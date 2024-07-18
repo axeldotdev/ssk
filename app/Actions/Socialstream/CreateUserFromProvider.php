@@ -12,8 +12,7 @@ class CreateUserFromProvider implements CreatesUserFromProvider
 {
     public function __construct(
         public CreatesConnectedAccounts $createsConnectedAccounts,
-    ) {
-    }
+    ) {}
 
     public function create(string $provider, ProviderUser $providerUser): User
     {

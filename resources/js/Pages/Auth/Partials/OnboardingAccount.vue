@@ -1,5 +1,4 @@
 <script setup>
-import { defineEmits } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { useForm } from 'laravel-precognition-vue-inertia'
 

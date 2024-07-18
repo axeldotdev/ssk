@@ -16,15 +16,16 @@ return new class() extends Migration
             $table->timestamps();
         });
 
-        Schema::create('members', function (Blueprint $table) {
-            $table->id();
+        Schema::create('company_user', function (Blueprint $table) {
+            $table->primary(['company_id', 'user_id']);
             $table->foreignId('company_id')->constrained('companies');
             $table->foreignId('user_id')->constrained('users');
-            $table->timestamps();
+            $table->string('role')->nullable();
         });
 
         Schema::create('company_invitations', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
@@ -35,7 +36,7 @@ return new class() extends Migration
     public function down(): void
     {
         Schema::dropIfExists('companies');
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('company_users');
         Schema::dropIfExists('company_invitations');
     }
 };

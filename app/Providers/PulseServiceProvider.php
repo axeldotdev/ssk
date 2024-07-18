@@ -11,7 +11,9 @@ class PulseServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('viewPulse', function (User $user) {
-            return str($user->email)->endsWith('@orvea.io');
+            return in_array($user->email, [
+                'jd@example.com',
+            ]);
         });
     }
 }

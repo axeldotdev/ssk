@@ -27,7 +27,10 @@ class TokenController extends Controller
 
     public function store(TokenRequest $request): RedirectResponse
     {
-        $token = $request->user()->createToken($request->validated());
+        $token = $request->user()->createToken(
+            name: $request->input('name'),
+            expiresAt: $request->input('expires_at'),
+        );
 
         return Redirect::route('tokens.index')->with(['token' => $token]);
     }

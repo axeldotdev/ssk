@@ -18,7 +18,7 @@ class CompanyController extends Controller
             'filters' => $request->only('name'),
             'companies' => Company::query()
                 ->select('uuid', 'name', 'user_id')
-                ->with(['user' => function (Builder $query) {
+                ->with(['owner' => function (Builder $query) {
                     $query->select('id', 'email', 'fullname');
                 },
                 ])

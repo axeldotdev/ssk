@@ -16,8 +16,7 @@ class CompanyDeleted
 
     public function __construct(
         public Company $company,
-    ) {
-    }
+    ) {}
 
     /** @return array<int, \Illuminate\Broadcasting\Channel> */
     public function broadcastOn(): array

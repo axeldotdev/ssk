@@ -5,23 +5,30 @@ use App\Models\User;
 test('login screen can be rendered', function () {
     $response = $this->get('/login');
 
-    $response->assertStatus(200);
+    $response
+        ->assertSessionHasNoErrors()
+        ->assertStatus(200);
 });
 
 test('users can authenticate using the login screen', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withCurrentCompany()->create([
+        'email' => 'axelcharpentier0@icloud.com',
+    ]);
 
     $response = $this->post('/login', [
         'email' => $user->email,
-        'password' => 'password',
+        'password' => 'W544AW&t',
     ]);
 
+    $response
+        ->assertSessionHasNoErrors()
+        ->assertRedirect(route('dashboard', absolute: false));
+
     $this->assertAuthenticated();
-    $response->assertRedirect(route('dashboard', absolute: false));
 });
 
 test('users can not authenticate with invalid password', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withCurrentCompany()->create();
 
     $this->post('/login', [
         'email' => $user->email,
@@ -32,10 +39,13 @@ test('users can not authenticate with invalid password', function () {
 });
 
 test('users can logout', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withCurrentCompany()->create();
 
     $response = $this->actingAs($user)->post('/logout');
 
+    $response
+        ->assertSessionHasNoErrors()
+        ->assertRedirect('/');
+
     $this->assertGuest();
-    $response->assertRedirect('/');
 });

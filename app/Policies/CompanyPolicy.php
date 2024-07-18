@@ -31,4 +31,19 @@ class CompanyPolicy
     {
         return true;
     }
+
+    public function viewMembers(User $user): bool
+    {
+        return true;
+    }
+
+    public function addMember(User $user, User $model): bool
+    {
+        return true;
+    }
+
+    public function removeMember(User $user, User $model): bool
+    {
+        return true;
+    }
 }

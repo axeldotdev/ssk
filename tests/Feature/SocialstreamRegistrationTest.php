@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Session;
-use JoelButcher\Socialstream\Providers;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\User;
 use Mockery;
@@ -20,16 +19,8 @@ class SocialstreamRegistrationTest extends TestCase
     public static function socialiteProvidersDataProvider(): array
     {
         return [
-            [Providers::bitbucket()],
-            [Providers::facebook()],
-            [Providers::github()],
-            [Providers::gitlab()],
-            [Providers::google()],
-            [Providers::linkedin()],
-            [Providers::linkedinOpenId()],
-            [Providers::slack()],
-            [Providers::twitterOAuth1()],
-            [Providers::twitterOAuth2()],
+            ['google'],
+            ['microsoft'],
         ];
     }
 
@@ -38,10 +29,6 @@ class SocialstreamRegistrationTest extends TestCase
      */
     public function test_users_get_redirected_correctly(string $provider): void
     {
-        if (! Providers::enabled($provider)) {
-            $this->markTestSkipped("Registration support with the {$provider} provider is not enabled.");
-        }
-
         config()->set("services.{$provider}", [
             'client_id' => 'client-id',
             'client_secret' => 'client-secret',
@@ -57,10 +44,6 @@ class SocialstreamRegistrationTest extends TestCase
      */
     public function test_users_can_register_using_socialite_providers(string $socialiteProvider)
     {
-        if (! Providers::enabled($socialiteProvider)) {
-            $this->markTestSkipped("Registration support with the {$socialiteProvider} provider is not enabled.");
-        }
-
         $user = (new User())
             ->map([
                 'id' => 'abcdefgh',

@@ -18,11 +18,17 @@ class CompanyResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string
     {
+        /** @var \App\Models\Company $record */
+        $record = $record;
+
         return $record->name;
     }
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {
+        /** @var \App\Models\Company $record */
+        $record = $record;
+
         return [
             'Owner' => $record->owner->fullname,
         ];

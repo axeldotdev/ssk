@@ -27,7 +27,9 @@ class HealthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('viewHealth', function (User $user) {
-            return str($user->email)->endsWith('@orvea.io');
+            return in_array($user->email, [
+                'jd@example.com',
+            ]);
         });
 
         Health::checks([

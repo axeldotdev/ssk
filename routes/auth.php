@@ -123,13 +123,16 @@ Route::middleware(['auth'])->group(function () {
     ])->name('onboarding');
 
     Route::get('assignment', [AssignmentController::class, 'show'])
-        ->name('assignment.show');
+        ->name('assignment.show')
+        ->middleware(['onboarded']);
 
     Route::post('assignment', [AssignmentController::class, 'store'])
-        ->name('assignment.store');
+        ->name('assignment.store')
+        ->middleware(['onboarded']);
 
     Route::put('assignment', [AssignmentController::class, 'update'])
-        ->name('assignment.update');
+        ->name('assignment.update')
+        ->middleware(['onboarded']);
 
     Route::get(
         'confirm-password',

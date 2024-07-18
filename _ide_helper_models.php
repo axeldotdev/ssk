@@ -88,7 +88,7 @@ namespace App\Models{
  * @property string|null $email
  * @property string|null $telephone
  * @property string|null $avatar_path
- * @property-read string $token
+ * @property string $token
  * @property string|null $secret
  * @property string|null $refresh_token
  * @property \Illuminate\Support\Carbon|null $expires_at

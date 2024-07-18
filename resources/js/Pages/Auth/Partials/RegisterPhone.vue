@@ -1,5 +1,4 @@
 <script setup>
-import { defineEmits } from 'vue'
 import { useForm } from 'laravel-precognition-vue-inertia'
 
 import { Button } from '@/components/ui/button'

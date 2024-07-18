@@ -2,6 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Enums\Country;
+use App\Enums\Locale;
+use App\Enums\Timezone;
+use App\Models\Company;
 use App\Models\ConnectedAccount;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -14,32 +18,29 @@ use JoelButcher\Socialstream\Providers;
  */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
     protected static ?string $password;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [
             'uuid' => (string) Str::uuid(),
+            'current_company_id' => null,
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
-            'verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'phone' => fake()->phoneNumber(),
+            'password' => static::$password ??= Hash::make('W544AW&t'),
             'remember_token' => Str::random(10),
+            'country' => Country::France,
+            'locale' => Locale::EN,
+            'timezone' => Timezone::EuropeLondon,
+            'verified_at' => now(),
+            'onboarded_at' => now(),
+            'anonymized_at' => null,
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
     public function unverified(): static
     {
         return $this->state(fn () => [
@@ -47,9 +48,32 @@ class UserFactory extends Factory
         ]);
     }
 
-    /**
-     * Indicate that the user should have a connected account for the given provider.
-     */
+    public function notOnboarded(): static
+    {
+        return $this->state(fn () => [
+            'onboarded_at' => null,
+        ]);
+    }
+
+    public function anonymized(): static
+    {
+        return $this->state(fn () => [
+            'anonymized_at' => now(),
+        ]);
+    }
+
+    public function withCurrentCompany(?callable $callback = null): static
+    {
+        return $this->has(
+            Company::factory()
+                ->state(fn (array $attributes, User $user) => [
+                    'user_id' => $user->id,
+                ])
+                ->when(is_callable($callback), $callback),
+            'ownedCompanies'
+        );
+    }
+
     public function withConnectedAccount(string $provider, ?callable $callback = null): static
     {
         if (! Providers::enabled($provider)) {

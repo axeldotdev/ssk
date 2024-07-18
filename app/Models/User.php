@@ -15,6 +15,7 @@ use Filament\Panel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -48,14 +49,9 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
         'deleted' => UserDeleted::class,
     ];
 
-    public function allCompanies(): Collection
+    public function isCurrentCompany(Company $company): bool
     {
-        return $this->companies()->merge($this->ownedCompanies);
-    }
-
-    public function companies(): Collection
-    {
-        return $this->members()->with('company')->get()->map->company;
+        return $company->id === $this->currentCompany->id;
     }
 
     public function currentCompany(): BelongsTo
@@ -63,9 +59,23 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
         return $this->belongsTo(Company::class, 'current_company_id');
     }
 
-    public function members(): HasMany
+    public function switchCompany(?Company $company): bool
     {
-        return $this->hasMany(Member::class);
+        if (! $this->belongsToCompany($company)) {
+            return false;
+        }
+
+        $this->update(['current_company_id' => $company->id]);
+
+        $this->setRelation('currentCompany', $company);
+
+        return true;
+    }
+
+    public function allCompanies(): Collection
+    {
+        return $this->ownedCompanies->merge($this->companies)
+            ->sortBy('name');
     }
 
     public function ownedCompanies(): HasMany
@@ -73,18 +83,45 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
         return $this->hasMany(Company::class);
     }
 
+    public function companies(): BelongsToMany
+    {
+        return $this->belongsToMany(Company::class, Membership::class)
+            ->withPivot('role')
+            ->as('membership');
+    }
+
+    public function ownsCompany($company)
+    {
+        if (is_null($company)) {
+            return false;
+        }
+
+        return $this->id === $company->id;
+    }
+
+    public function belongsToCompany(?Company $company): bool
+    {
+        if (is_null($company)) {
+            return false;
+        }
+
+        return $this->ownsCompany($company) || $this->companies->contains(
+            fn ($c) => $c->id === $company->id
+        );
+    }
+
     public function markUserAsVerified(): bool
     {
-        return $this->forceFill([
+        return $this->update([
             'verified_at' => $this->freshTimestamp(),
-        ])->save();
+        ]);
     }
 
     public function markUserAsOnboarded(): bool
     {
-        return $this->forceFill([
+        return $this->update([
             'onboarded_at' => $this->freshTimestamp(),
-        ])->save();
+        ]);
     }
 
     public function isOnboarded(): bool
@@ -100,7 +137,6 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
     public function phone(): Attribute
     {
         return new Attribute(
-            get: fn ($value) => $value,
             set: fn ($value) => str($value)->replace(' ', ''),
         );
     }
@@ -117,7 +153,9 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return str($this->email)->endsWith('@orvea.io');
+        return in_array($this->email, [
+            'jd@example.com',
+        ]);
     }
 
     public function getFilamentName(): string

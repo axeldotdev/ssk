@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Notification;
@@ -39,29 +40,26 @@ class Company extends Model implements Auditable, HasMedia
         'deleted' => CompanyDeleted::class,
     ];
 
-    public function allUsers(): Collection
+    public function owner(): BelongsTo
     {
-        return $this->users()->push($this->user);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function allUsers()
+    {
+        return $this->users->merge([$this->owner]);
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, Membership::class)
+            ->withPivot('role')
+            ->as('membership');
     }
 
     public function invitations(): HasMany
     {
         return $this->hasMany(CompanyInvitation::class);
-    }
-
-    public function members(): HasMany
-    {
-        return $this->hasMany(Member::class);
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function users(): Collection
-    {
-        return $this->members()->with('user')->get()->map->user;
     }
 
     public function inviteCollaborators(array $emails): Collection
@@ -79,6 +77,50 @@ class Company extends Model implements Auditable, HasMedia
         }
 
         return $invitations;
+    }
+
+    public function hasUser(User $user): bool
+    {
+        return $this->users->contains($user)
+            || $user->ownsCompany($this);
+    }
+
+    public function hasUserWithEmail(string $email): bool
+    {
+        return $this->allUsers()->contains(
+            fn ($user) => $user->email === $email,
+        );
+    }
+
+    public function hasUserWithPhone(string $phone): bool
+    {
+        return $this->allUsers()->contains(
+            fn ($user) => $user->phone === $phone,
+        );
+    }
+
+    public function removeUser(User $user): void
+    {
+        if ($user->current_company_id === $this->id) {
+            $user->update(['current_company_id' => null]);
+        }
+
+        $this->users()->detach($user);
+    }
+
+    public function purge(): void
+    {
+        $this->owner()
+            ->where('current_company_id', $this->id)
+            ->update(['current_company_id' => null]);
+
+        $this->users()
+            ->where('current_company_id', $this->id)
+            ->update(['current_company_id' => null]);
+
+        $this->users()->detach();
+
+        $this->delete();
     }
 
     public function registerMediaCollections(): void

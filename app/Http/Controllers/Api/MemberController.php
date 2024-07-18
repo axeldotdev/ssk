@@ -5,26 +5,25 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\Company;
-use App\Models\Member;
 use App\Models\User;
 
-class MemberController extends Controller
+class MembershipController extends Controller
 {
     public function index(Company $company): UserResource
     {
-        return new UserResource(Member::users($company)->paginate());
+        return new UserResource($company->users()->paginate());
     }
 
     public function store(Company $company, User $user): UserResource
     {
-        Member::createFor($company, $user);
+        $company->users()->attach($user);
 
         return new UserResource($user);
     }
 
     public function destroy(Company $company, User $user): UserResource
     {
-        Member::for($company, $user)->delete();
+        $company->users()->detach($user);
 
         return new UserResource($user);
     }

@@ -11,6 +11,5 @@ class Verified
 
     public function __construct(
         public Authenticatable $user,
-    ) {
-    }
+    ) {}
 }

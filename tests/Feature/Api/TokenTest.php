@@ -3,11 +3,13 @@
 use App\Models\User;
 
 it('can get a token', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withCurrentCompany()->create([
+        'email' => 'axlecharpentier0@icloud.com',
+    ]);
 
     $response = $this->postJson('/api/tokens/create', [
         'email' => $user->email,
-        'password' => 'password',
+        'password' => 'W544AW&t',
     ]);
 
     $response

@@ -1,5 +1,5 @@
 <script setup>
-import { defineEmits, ref } from 'vue'
+import { ref } from 'vue'
 import { useForm } from 'laravel-precognition-vue-inertia'
 
 import { toast } from 'vue-sonner'

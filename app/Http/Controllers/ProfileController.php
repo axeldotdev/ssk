@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DestroyUserRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -29,22 +30,20 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
 
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(DestroyUserRequest $request): RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
-
         $user = $request->user();
 
         Auth::logout();
 
         $user->connectedAccounts->each->delete();
+        $user->updateQuietly(['current_company_id' => null]);
+        $user->companies()->detach();
         $user->delete();
 
         Session::invalidate();
         Session::regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/login');
     }
 }

@@ -43,7 +43,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     protected function gate(): void
     {
         Gate::define('viewTelescope', function ($user) {
-            return str($user->email)->endsWith('@orvea.io');
+            return in_array($user->email, [
+                'jd@example.com',
+            ]);
         });
     }
 }

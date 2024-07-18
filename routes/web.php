@@ -14,7 +14,7 @@ Route::get('tools/health', HealthCheckResultsController::class)
 Route::redirect('/', 'dashboard');
 
 Route::middleware([
-    'auth:sanctum', 'verified', 'onboarded',
+    'auth', 'verified', 'onboarded',
     'assigned', 'localized',
 ])->group(function () {
     Route::get('dashboard', function () {

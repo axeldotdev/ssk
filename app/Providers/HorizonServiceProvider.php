@@ -12,13 +12,15 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     {
         parent::boot();
 
-        Horizon::routeMailNotificationsTo('tech@orvea.io');
+        Horizon::routeMailNotificationsTo('jd@example.com');
     }
 
     protected function gate(): void
     {
         Gate::define('viewHorizon', function ($user) {
-            return str($user->email)->endsWith('@orvea.io');
+            return in_array($user->email, [
+                'jd@example.com',
+            ]);
         });
     }
 }

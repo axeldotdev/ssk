@@ -22,7 +22,7 @@ class CompanyInvitationRequest extends FormRequest
             'lastname' => ['required', 'string'],
             'email' => [
                 'required_if:register_method,email', 'string', 'lowercase',
-                'email:rfc,dns,spoof', Rule::unique(User::class),
+                'email:rfc,dns,spoof', Rule::unique(User::class, 'email'),
             ],
             'phone' => [
                 'required_if:register_method,phone', 'string',

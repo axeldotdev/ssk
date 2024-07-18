@@ -16,8 +16,7 @@ class UserCreated
 
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 
     /** @return array<int, \Illuminate\Broadcasting\Channel> */
     public function broadcastOn(): array

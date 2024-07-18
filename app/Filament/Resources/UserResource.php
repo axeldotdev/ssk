@@ -22,11 +22,17 @@ class UserResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string
     {
+        /** @var \App\Models\User $record */
+        $record = $record;
+
         return $record->fullname;
     }
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {
+        /** @var \App\Models\User $record */
+        $record = $record;
+
         return [
             'Email' => $record->email,
             'Phone' => $record->phone,
@@ -106,23 +112,25 @@ class UserResource extends Resource
                     ->searchable(),
                 TextColumn::make('verified')
                     ->label(__('Verified'))
-                    ->getStateUsing(function (Model $record) {
+                    ->getStateUsing(function (User $record) {
                         return $record->isVerified() ? __('Yes') : __('No');
                     })
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         __('Yes') => 'success',
                         __('No') => 'danger',
+                        default => 'success',
                     }),
                 TextColumn::make('onboarded')
                     ->label(__('Onboarded'))
-                    ->getStateUsing(function (Model $record) {
+                    ->getStateUsing(function (User $record) {
                         return $record->isOnboarded() ? __('Yes') : __('No');
                     })
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         __('Yes') => 'success',
                         __('No') => 'danger',
+                        default => 'success',
                     }),
             ])
             ->filters([])

@@ -15,7 +15,9 @@ class TokenController extends Controller
     {
         $user = User::where('email', $request->input('email'))->first();
 
-        if (! $user || ! Hash::check($request->input('password'), $user->password)) {
+        $hashCheck = Hash::check($request->input('password'), $user->password);
+
+        if (! $user || ! $hashCheck) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);

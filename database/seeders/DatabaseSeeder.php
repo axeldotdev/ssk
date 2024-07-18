@@ -11,11 +11,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()
-            ->count(500_000)
+            ->count(1_000)
             ->has(Company::factory()->count(2), 'ownedCompanies')
             ->create();
 
-        User::factory()->create([
+        User::factory()->notOnboarded()->create([
             'firstname' => 'Axel',
             'lastname' => 'Charpentier',
             'email' => 'acharpentier@orvea.io',

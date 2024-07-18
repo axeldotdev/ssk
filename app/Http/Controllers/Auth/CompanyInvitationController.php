@@ -33,7 +33,7 @@ class CompanyInvitationController extends Controller
             'onboarded_at' => now(),
             'current_company_id' => $company->id,
         ]);
-        $company->members()->create(['user_id' => $user->id]);
+        $company->users()->attach($user);
         $invitation->delete();
 
         return redirect()->route('dashboard');
