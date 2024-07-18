@@ -4,11 +4,11 @@ use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\ConfigController;
 use App\Http\Controllers\Api\CurrentCompanyController;
 use App\Http\Controllers\Api\CurrentUserController;
-use App\Http\Controllers\Api\MemberController;
+use App\Http\Controllers\Api\MembershipController;
 use App\Http\Controllers\Api\SwitchCompanyController;
 use App\Http\Controllers\Api\TokenController;
 use App\Http\Controllers\Api\UserController;
-use App\Models\Member;
+use App\Models\Membership;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -50,12 +50,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('companies/{company}', [CompanyController::class, 'destroy'])
         ->can('delete', 'company');
 
-    Route::get('companies/{company}/users', [MemberController::class, 'index'])
-        ->can('viewAny', Member::class);
-    Route::post('companies/{company}/users', [MemberController::class, 'store'])
-        ->can('create', Member::class);
+    Route::get('companies/{company}/users', [MembershipController::class, 'index'])
+        ->can('viewAny', Membership::class);
+    Route::post('companies/{company}/users', [MembershipController::class, 'store'])
+        ->can('create', Membership::class);
     Route::delete(
         'companies/{company}/users/{user}',
-        [MemberController::class, 'detroy'],
+        [MembershipController::class, 'detroy'],
     )->can('delete', 'member');
 });

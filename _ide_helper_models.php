@@ -28,9 +28,10 @@ namespace App\Models{
  * @property-read int|null $invitations_count
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \Spatie\MediaLibrary\MediaCollections\Models\Media> $media
  * @property-read int|null $media_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Member> $members
- * @property-read int|null $members_count
- * @property-read \App\Models\User $user
+ * @property-read \App\Models\User $owner
+ * @property-read \App\Models\Membership $membership
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
  * @method static \Database\Factories\CompanyFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
@@ -52,6 +53,7 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $uuid
  * @property int $company_id
  * @property string|null $email
  * @property string|null $phone
@@ -69,6 +71,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyInvitation whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyInvitation wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyInvitation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyInvitation whereUuid($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
@@ -126,29 +129,21 @@ namespace App\Models{
 /**
  * 
  *
- * @property int $id
  * @property int $company_id
  * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $role
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \OwenIt\Auditing\Models\Audit> $audits
  * @property-read int|null $audits_count
- * @property-read \App\Models\Company $company
- * @property-read \App\Models\User $user
- * @method static \Database\Factories\MemberFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Member for(\App\Models\Company $company, \App\Models\User $user)
- * @method static \Illuminate\Database\Eloquent\Builder|Member newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Member newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Member query()
- * @method static \Illuminate\Database\Eloquent\Builder|Member whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Member whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Member whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Member whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Member whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
-	class IdeHelperMember {}
+	class IdeHelperMembership {}
 }
 
 namespace App\Models{
@@ -165,7 +160,6 @@ namespace App\Models{
  * @property string|null $phone
  * @property mixed|null $password
  * @property string|null $remember_token
- * @property string|null $picture_path
  * @property \App\Enums\Country|null $country
  * @property \App\Enums\Locale $locale
  * @property \App\Enums\Timezone $timezone
@@ -176,11 +170,12 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \OwenIt\Auditing\Models\Audit> $audits
  * @property-read int|null $audits_count
+ * @property-read \App\Models\Membership $membership
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $companies
+ * @property-read int|null $companies_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \JoelButcher\Socialstream\ConnectedAccount> $connectedAccounts
  * @property-read int|null $connected_accounts_count
  * @property-read \App\Models\Company|null $currentCompany
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Member> $members
- * @property-read int|null $members_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $ownedCompanies
@@ -204,7 +199,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereOnboardedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePicturePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTimezone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
