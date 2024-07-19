@@ -2,6 +2,8 @@
 
 namespace App\Support;
 
+use Illuminate\Support\Arr;
+
 class TranslationManager
 {
     protected ?string $locale;
@@ -47,5 +49,17 @@ class TranslationManager
             fn ($matches) => '{' . $matches[1] . '}',
             $content,
         );
+    }
+
+    public function markdownFile(string $name): string
+    {
+        $localName = preg_replace('#(\.md)$#i', '.' . $this->locale . '$1', $name);
+
+        return Arr::first([
+            resource_path('markdown/' . $localName),
+            resource_path('markdown/' . $name),
+        ], function ($path) {
+            return file_exists($path);
+        });
     }
 }

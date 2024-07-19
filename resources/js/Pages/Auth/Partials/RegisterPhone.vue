@@ -84,7 +84,18 @@ const back = () => emit('back')
         <div class="flex items-center space-x-2">
             <Checkbox v-model:checked="phoneForm.terms" id="terms" />
             <Label for="terms">
-                {{ $t('I accept the terms and conditions') }}
+                <i18n-t keypath="I agree to the {Terms} and {Policy}" tag="span">
+                    <template v-slot:Terms>
+                        <a target="_blank" :href="route('terms.show')" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50">
+                            {{ $t('Terms of service') }}
+                        </a>
+                    </template>
+                    <template v-slot:Policy>
+                        <a target="_blank" :href="route('policy.show')" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50">
+                            {{ $t('Privacy policy') }}
+                        </a>
+                    </template>
+                </i18n-t>
             </Label>
         </div>
 

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CurrentCompanyController;
+use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TermsOfServiceController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +12,11 @@ use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 Route::get('tools/health', HealthCheckResultsController::class)
     ->can('viewHealth');
+
+Route::get('/terms-of-service', [TermsOfServiceController::class, 'show'])
+    ->name('terms.show');
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])
+    ->name('policy.show');
 
 Route::redirect('/', 'dashboard');
 
