@@ -33,6 +33,7 @@ jobs:
         run: |
           cp .env.example .env
           php artisan key:generate
+          php artisan migrate
 
       - name: Run tests
         run: php artisan test --profile --coverage
