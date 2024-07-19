@@ -54,7 +54,7 @@ defineProps({
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem as-child>
-                            <Link :href="route('documentation.get-started')">
+                            <Link :href="route('documentation', { firstLevel: 'get-started'})">
                                 {{ $t('API documentation') }}
                             </Link>
                         </DropdownMenuItem>

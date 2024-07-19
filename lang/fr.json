@@ -23,7 +23,7 @@
 
     "Forgot your password?": "Mot de passe oublié ?",
     "No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Pas de problème. Indiquez-nous simplement votre adresse e-mail et nous vous enverrons un lien de réinitialisation de mot de passe par e-mail qui vous permettra d'en choisir un nouveau.",
-    "Email password reset link": "Email le lien de réinitialisation du mot de passe",
+    "Email password reset link": "Envoyer le lien de réinitialisation du mot de passe",
     "Back to login": "Retour à la connexion",
 
     "Reset your password": "Réinitialiser votre mot de passe",
@@ -114,6 +114,7 @@
     "You need to use the API? Create a token here.": "Vous avez besoin d'utiliser l'API ? Créez un jeton ici.",
 
     "API documentation": "Documentation API",
+    "List": "Liste",
 
     "Companies": "Entreprises",
     "Create a company and invite your collaborators.": "Créez une entreprise et invitez vos collaborateurs.",

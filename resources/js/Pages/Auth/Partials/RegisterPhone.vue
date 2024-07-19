@@ -81,8 +81,8 @@ const back = () => emit('back')
             </ErrorMessage>
         </div>
 
-        <div class="flex items-center space-x-2">
-            <Checkbox v-model:checked="phoneForm.terms" id="terms" />
+        <div class="flex space-x-2">
+            <Checkbox v-model:checked="phoneForm.terms" id="terms" class="mt-0.5" />
             <Label for="terms">
                 <i18n-t keypath="I agree to the {Terms} and {Policy}" tag="span">
                     <template v-slot:Terms>

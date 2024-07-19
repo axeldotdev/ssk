@@ -84,7 +84,7 @@ const submitRevokeTokenForm = (token) => {
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem as-child>
-                            <Link :href="route('documentation.get-started')">
+                            <Link :href="route('documentation', { firstLevel: 'get-started'})">
                                 {{ $t('API documentation') }}
                             </Link>
                         </DropdownMenuItem>
@@ -98,7 +98,7 @@ const submitRevokeTokenForm = (token) => {
 
             <template v-slot:actions>
                 <Button variant="link" as-child>
-                    <Link :href="route('documentation.get-started')">
+                    <Link :href="route('documentation', { firstLevel: 'get-started'})">
                         {{ $t('API documentation') }}
                     </Link>
                 </Button>

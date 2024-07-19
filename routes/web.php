@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CurrentCompanyController;
+use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TermsOfServiceController;
@@ -49,9 +50,10 @@ Route::middleware([
     Route::delete('tokens/{token}', [TokenController::class, 'destroy'])
         ->name('tokens.destroy');
 
-    Route::get('documentation/get-started', function () {
-        return Inertia::render('Documentation/GetStarted');
-    })->name('documentation.get-started');
+    Route::get(
+        'documentation/{firstLevel}/{secondLevel?}',
+        [DocumentationController::class, 'show'],
+    )->name('documentation');
 
     Route::get('companies', [CompanyController::class, 'index'])
         ->name('companies.index');

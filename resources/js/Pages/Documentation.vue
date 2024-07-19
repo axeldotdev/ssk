@@ -21,10 +21,15 @@ import {
 
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import Header from '@/components/Header.vue'
+
+defineProps({
+    title: String,
+    content: String,
+})
 </script>
 
 <template>
-    <Head :title="`${$t('API documentation')} - ${$t('Get started')}`"/>
+    <Head :title="`${$t('API documentation')} - ${title}`"/>
 
     <AuthenticatedLayout>
         <Breadcrumb>
@@ -60,13 +65,13 @@ import Header from '@/components/Header.vue'
             </BreadcrumbSeparator>
             <BreadcrumbItem>
                 <BreadcrumbPage>
-                    {{ $t('Get started') }}
+                    {{ title }}
                 </BreadcrumbPage>
             </BreadcrumbItem>
         </Breadcrumb>
 
         <Header>
-            {{ $t('Get started') }}
+            {{ title }}
 
             <template v-slot:actions>
                 <Button as-child>
@@ -76,5 +81,7 @@ import Header from '@/components/Header.vue'
                 </Button>
             </template>
         </Header>
+
+        <div v-html="content" class="w-full prose prose-neutral" />
     </AuthenticatedLayout>
 </template>

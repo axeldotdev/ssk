@@ -17,7 +17,7 @@ class TranslationManager
 
     public function currentLocale(): self
     {
-        $this->locale = request()->user()->locale ?? config('app.locale');
+        $this->locale = request()->user()->locale->value ?? config('app.locale');
 
         return $this;
     }
@@ -53,11 +53,36 @@ class TranslationManager
 
     public function markdownFile(string $name): string
     {
-        $localName = preg_replace('#(\.md)$#i', '.' . $this->locale . '$1', $name);
+        return $this->file($name, 'markdown/');
+    }
+
+    public function documentationFile(
+        string $firstLevel,
+        ?string $secondLevel = null,
+    ): string {
+        $folderPath = 'markdown/documentation/';
+        $name = ($secondLevel ?? $firstLevel) . '.md';
+
+        if ($secondLevel) {
+            $folderPath .= "{$firstLevel}/";
+        }
+
+        return $this->file($name, $folderPath);
+    }
+
+    public function file(
+        string $name,
+        string $folderPath = 'markdown/documentation/',
+    ): string {
+        $localName = preg_replace(
+            '#(\.md)$#i',
+            '.' . $this->locale . '$1',
+            $name,
+        );
 
         return Arr::first([
-            resource_path('markdown/' . $localName),
-            resource_path('markdown/' . $name),
+            resource_path($folderPath . $localName),
+            resource_path($folderPath . $name),
         ], function ($path) {
             return file_exists($path);
         });

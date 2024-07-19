@@ -96,7 +96,7 @@ const isCurrentRoute = (route) => currentRoute === route
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem as-child>
-                            <Link :href="route('documentation.get-started')" :class="[isCurrentRoute('documentation.get-started') ? 'bg-neutral-100' : '', 'w-full cursor-pointer']">
+                            <Link :href="route('documentation', { firstLevel: 'get-started'})" :class="[isCurrentRoute('documentation') ? 'bg-neutral-100' : '', 'w-full cursor-pointer']">
                                 {{ $t('API documentation') }}
                             </Link>
                         </DropdownMenuItem>
