@@ -43,30 +43,23 @@ Horizon is installed and configure so you can switch your queues to redis very q
 
 **SSK** is just a wrapper around **Laravel Breeze** who is a wrapper around **Laravel**. You have all the power to modify it to suit your need.
 
-## Coming soon
-
-- Sessions management on profile
-- 2FA on profile
-- Transfer company
-- Companies create and edit forms
-- Command bar with search and shortcuts
-- Notification center
-- Third party apps integrations
-- Tests
-
 ## Available Features
 
-- Sign up with email, phone, Google or Microsoft
-- Sign in with email, phone, Google or Microsoft
-- User verification via email or phone (depending on the sing up method)
-- Reset password for email
-- Onboarding (account, company, collaborators)
-- Collaborators invitation by email or phone
-- Multiple tenants (companies)
-- Active sessions management
-- Company transfer ownership
-- 2FA
-- API via token
+- 🧑‍💻 Login and registration with email, phone, Google or Microsoft
+- ✅ User verification via email or phone (depending on the sing up method)
+- 🔑 Reset password for email
+- 📜 Privacy policy and Terms of service pages (with localized markdown files)
+- 🤝 Onboarding (account, company, collaborators)
+- 🧑‍💼 Collaborators invitation by email or phone
+- 🏁 Multiple tenants (companies)
+- 🔬 Active sessions management *[coming soon]*
+- 🖋️ Company transfer ownership *[coming soon]*
+- 🔐 2FA *[coming soon]*
+- 💻 API via token *[coming soon]*
+- 🔍 Global search with shortcuts *[coming soon]*
+- 📖 API documentation (with localized markdow files)
+- 🇺🇸 English and 🇫🇷 French translations
+- 🚦 Multiple feature flags (to enable the features listed above)
 
 ## Features Flags
 
@@ -107,54 +100,6 @@ Allows you to show an onboarding view to help user start using your app and regi
 `\App\Features\OnboardUser`
 
 The onboarding feature just give you a basic system, it's up to you to add forms and other things into it.
-
-## Packages
-
-SSK use some of the great packages  of the Laravel ecosystem to help you build the best app you can.
-
-### Composer
-
-- Laravel Breeze
-- Laravel Horizon
-- Laravel Octane
-- Laravel Pennant
-- Laravel Pulse
-- Laravel Reverb
-- Laravel Sanctum
-- Laravel Telescope
-- Laravel Precognition
-- Inertia
-- Socialstream (wrapper around Laravel Socialite)
-- Filament
-- Laravel Auditing
-- Saloon
-- Spatie Laravel Health
-- Spatie Laravel Backup
-- Spatie Laravel Medialibrary
-- Spatie Laravel CSP
-- Spatie Laravel Google Fonts
-
-### Composer dev
-
-- Laravel Dusk
-- Larastan
-- PHP Insights
-- Pest
-- Pint
-
-### NPM
-
-- Laravel Echo
-- Shadcn-vue
-- Vue
-- Inertia
-- Github Hotkey
-- Tailwind CSS
-- Axios
-
-### NPM dev
-
-- Prettier
 
 ## Upgrading
 
