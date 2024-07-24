@@ -65,23 +65,19 @@ Horizon is installed and configure so you can switch your queues to redis very q
 
 To activate or deactivate a feature, you just need to open the class and change the boolean returned in the `resolve` method.
 
+The features are located in the folder `app/Features`.
+
 ### SignViaEmail
 
 Allows you to login and register via an email address.
-
-`\App\Features\SignViaEmail`
 
 ### SignViaPhone
 
 Allows you to login and register via a phone number.
 
-`\App\Features\SignViaPhone`
-
 ### SignViaSSO
 
 Allows you to login and register via a SSO provider.
-
-`\App\Features\SignViaSSO`
 
 You can add providers in the `config/socialstream.php` file and register the env variable in the `config/services.php` file.
 
@@ -91,15 +87,23 @@ SSK comes with Google and Microsoft by default.
 
 Allows you to verify the user by email or phone according to his sign method.
 
-`\App\Features\VerifyUser`
-
 ### OnboardUser
 
 Allows you to show an onboarding view to help user start using your app and register some important informations.
 
-`\App\Features\OnboardUser`
-
 The onboarding feature just give you a basic system, it's up to you to add forms and other things into it.
+
+### ApiTokens
+
+Allows you to manage API tokens.
+
+It comes with a view that list tokens and a form to create them. The tokens are default Laravel Sanctum tokens scoped on users.
+
+### ApiDocumentation
+
+Allows you to show an API documentation in your app when the user is authenticated.
+
+The API works with markdown file so it's really easy to use, no PHP or Vue to add.
 
 ## Upgrading
 
