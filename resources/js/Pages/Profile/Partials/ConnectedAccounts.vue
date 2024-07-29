@@ -17,6 +17,8 @@ const hasAccountForProvider = (provider) => props.socialstream.connectedAccounts
 const getAccountForProvider = (provider) => props.socialstream.connectedAccounts
     .filter(account => account.provider === provider.id)
     .shift();
+
+const confirmAccountRemoval = (provider) => {}
 </script>
 
 <template>

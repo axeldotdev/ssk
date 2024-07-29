@@ -20,21 +20,23 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import ConnectedAccounts from '@/Pages/Profile/Partials/ConnectedAccounts.vue'
 import DeleteAccount from '@/Pages/Profile/Partials/DeleteAccount.vue'
 import Header from '@/components/Header.vue'
+import Passkeys from '@/Pages/Profile/Partials/Passkeys.vue'
 import PersonalInformations from '@/Pages/Profile/Partials/PersonalInformations.vue'
 import Sessions from '@/Pages/Profile/Partials/Sessions.vue'
+import SetPasskey from '@/Pages/Profile/Partials/SetPasskey.vue'
 import SetPassword from '@/Pages/Profile/Partials/SetPassword.vue'
 import TwoFactorAuthentication from '@/Pages/Profile/Partials/TwoFactorAuthentication.vue'
 import UpdatePassword from '@/Pages/Profile/Partials/UpdatePassword.vue'
 
 defineProps({
-    mustVerifyEmail: {
-        type: Boolean,
-    },
     status: {
         type: String,
     },
     socialstream: {
         type: Object,
+    },
+    passkeys: {
+        type: Array,
     },
 })
 </script>
@@ -84,6 +86,10 @@ defineProps({
         <SetPassword v-else></SetPassword>
 
         <ConnectedAccounts :socialstream="socialstream"></ConnectedAccounts>
+
+        <SetPasskey></SetPasskey>
+
+        <Passkeys :passkeys="passkeys"></Passkeys>
 
         <Sessions></Sessions>
 

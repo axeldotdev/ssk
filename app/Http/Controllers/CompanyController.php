@@ -40,6 +40,13 @@ class CompanyController extends Controller
         return Inertia::render('Companies/Create');
     }
 
+    public function store(Request $request): RedirectResponse
+    {
+        Company::create($request->all());
+
+        return Redirect::route('companies.index');
+    }
+
     public function show(Company $company): Response
     {
         return Inertia::render('Companies/Show', [

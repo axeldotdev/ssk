@@ -6,6 +6,7 @@ use App\Enums\Country;
 use App\Enums\Locale;
 use App\Enums\Timezone;
 use App\Models\Company;
+use App\Models\Passkey;
 use App\Support\TranslationManager;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -68,6 +69,12 @@ class HandleInertiaRequests extends Middleware
             'viewAny' => [
                 'companies' => fn () => $request->user()
                     ?->can('viewAny', Company::class),
+            ],
+            'create' => [
+                'companies' => fn () => $request->user()
+                    ?->can('create', Company::class),
+                'passkeys' => fn () => $request->user()
+                    ?->can('create', Passkey::class),
             ],
         ];
     }

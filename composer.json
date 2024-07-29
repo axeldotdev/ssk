@@ -37,6 +37,7 @@
         "laravel/tinker": "^2.9",
         "laravel/vonage-notification-channel": "^3.3",
         "owen-it/laravel-auditing": "^13.6",
+        "phpdocumentor/reflection-docblock": "^5.4",
         "saloonphp/cache-plugin": "^3.0",
         "saloonphp/laravel-plugin": "^3.0",
         "saloonphp/pagination-plugin": "^2.0",
@@ -50,7 +51,11 @@
         "spatie/laravel-google-fonts": "^1.4",
         "spatie/laravel-health": "^1.29",
         "spatie/laravel-medialibrary": "^11.5",
-        "tightenco/ziggy": "^2.0"
+        "symfony/property-access": "^7.1",
+        "symfony/property-info": "^7.1",
+        "symfony/serializer": "^7.1",
+        "tightenco/ziggy": "^2.0",
+        "web-auth/webauthn-lib": "^5.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",

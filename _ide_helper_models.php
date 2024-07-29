@@ -152,6 +152,40 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $uuid
+ * @property int $user_id
+ * @property string $name
+ * @property string $credential_id
+ * @property array $data
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \OwenIt\Auditing\Models\Audit> $audits
+ * @property-read int|null $audits_count
+ * @property-read mixed $can
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\PasskeyFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereCredentialId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Passkey whereUuid($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperPasskey {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $uuid
  * @property int|null $current_company_id
  * @property string $firstname
  * @property string $lastname
@@ -180,6 +214,8 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $ownedCompanies
  * @property-read int|null $owned_companies_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Passkey> $passkeys
+ * @property-read int|null $passkeys_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])

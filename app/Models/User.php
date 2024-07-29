@@ -99,6 +99,11 @@ class User extends Authenticatable implements Auditable, FilamentUser, HasName
         return $this->id === $company->id;
     }
 
+    public function passkeys(): HasMany
+    {
+        return $this->hasMany(Passkey::class);
+    }
+
     public function belongsToCompany(?Company $company): bool
     {
         if (is_null($company)) {

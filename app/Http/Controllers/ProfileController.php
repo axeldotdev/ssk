@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DestroyUserRequest;
 use App\Http\Requests\UserRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +17,12 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
+            'passkeys' => $request->user()->passkeys->map(fn ($passkey) => [
+                'id' => $passkey->uuid,
+                'name' => $passkey->name,
+                'created_at' => $passkey->created_at->diffForHumans(),
+            ]),
         ]);
     }
 

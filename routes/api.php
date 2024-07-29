@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ConfigController;
 use App\Http\Controllers\Api\CurrentCompanyController;
 use App\Http\Controllers\Api\CurrentUserController;
 use App\Http\Controllers\Api\MembershipController;
+use App\Http\Controllers\Api\PasskeyOptionController;
 use App\Http\Controllers\Api\SwitchCompanyController;
 use App\Http\Controllers\Api\TokenController;
 use App\Http\Controllers\Api\UserController;
@@ -17,6 +18,9 @@ Route::get('config', [ConfigController::class, 'index']);
 Route::post('tokens/create', [TokenController::class, 'store']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('passkeys/options', [PasskeyOptionController::class, 'index'])
+        ->name('passkeys.options');
+
     Route::get('user', [CurrentUserController::class, 'show']);
     Route::put('user', [CurrentUserController::class, 'update']);
 
