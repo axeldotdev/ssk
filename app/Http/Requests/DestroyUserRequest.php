@@ -7,11 +7,7 @@ use Illuminate\Validation\Validator;
 
 class DestroyUserRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
+    /** @return array<string, \Illuminate\Contracts\Validation\Rule|array|string> */
     public function rules(): array
     {
         return [

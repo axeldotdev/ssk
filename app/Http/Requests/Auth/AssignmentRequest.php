@@ -10,7 +10,7 @@ class AssignmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company' => ['required', 'string', 'exists:companies,uuid'],
+            'company' => ['required', 'string', 'max:255', 'exists:companies,uuid'],
         ];
     }
 }

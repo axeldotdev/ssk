@@ -10,10 +10,10 @@ class AccountOnboardingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => ['sometimes', 'string'],
-            'lastname' => ['sometimes', 'string'],
-            'country' => ['required', 'string'],
-            'locale' => ['required', 'string'],
+            'firstname' => ['sometimes', 'string', 'max:255'],
+            'lastname' => ['sometimes', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'locale' => ['required', 'string', 'max:255'],
         ];
     }
 }

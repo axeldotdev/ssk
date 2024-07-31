@@ -8,19 +8,15 @@ use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
+    /** @return array<string, \Illuminate\Contracts\Validation\Rule|array|string> */
     public function rules(): array
     {
         return [
-            'firstname' => ['required', 'string'],
-            'lastname' => ['required', 'string'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => [
-                'required', 'string', 'lowercase',
-                'email:rfc,dns,spoof',
+                'required', 'string', 'max:255',
+                'lowercase', 'email:rfc,dns,spoof',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
         ];

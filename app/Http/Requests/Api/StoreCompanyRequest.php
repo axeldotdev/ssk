@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyOnboardingRequest extends FormRequest
+class StoreCompanyRequest extends FormRequest
 {
-    /** @return array<string, \Illuminate\Contracts\Validation\Rule|array|string> */
+    /** @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string> */
     public function rules(): array
     {
         return [

@@ -17,13 +17,13 @@ class LoginRequest extends FormRequest
         return [
             'email' => [
                 'required_without:phone',
-                'string', 'lowercase',
+                'string', 'max:255', 'lowercase',
                 'email:rfc,dns,spoof',
             ],
-            'password' => ['required', 'string'],
+            'password' => ['required', 'string', 'max:255'],
             'phone' => [
                 'required_without:email',
-                'string',
+                'string', 'max:255',
             ],
         ];
     }

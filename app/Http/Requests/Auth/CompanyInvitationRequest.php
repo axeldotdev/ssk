@@ -14,18 +14,18 @@ class CompanyInvitationRequest extends FormRequest
     {
         return [
             'register_method' => [
-                'required', 'string', Rule::in(['email', 'phone']),
+                'required', 'string', 'max:255', Rule::in(['email', 'phone']),
             ],
-            'country' => ['required', 'string'],
-            'locale' => ['required', 'string'],
-            'firstname' => ['required', 'string'],
-            'lastname' => ['required', 'string'],
+            'country' => ['required', 'string', 'max:255'],
+            'locale' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => [
-                'required_if:register_method,email', 'string', 'lowercase',
+                'required_if:register_method,email', 'string', 'max:255', 'lowercase',
                 'email:rfc,dns,spoof', Rule::unique(User::class, 'email'),
             ],
             'phone' => [
-                'required_if:register_method,phone', 'string',
+                'required_if:register_method,phone', 'string', 'max:255',
             ],
             'password' => [
                 'required_without:phone', 'confirmed', Password::defaults(),

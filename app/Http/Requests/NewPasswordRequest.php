@@ -7,18 +7,14 @@ use Illuminate\Validation\Rules\Password;
 
 class NewPasswordRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+    /** @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string> */
     public function rules(): array
     {
         return [
-            'token' => 'required',
+            'token' => ['required'],
             'email' => [
-                'required', 'string', 'lowercase',
-                'email:rfc,dns,spoof',
+                'required', 'string', 'max:255',
+                'lowercase', 'email:rfc,dns,spoof',
             ],
             'password' => ['required', 'confirmed', Password::defaults()],
         ];

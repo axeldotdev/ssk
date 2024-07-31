@@ -13,16 +13,16 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => ['required', 'string'],
-            'lastname' => ['required', 'string'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => [
-                'required_without:phone', 'string', 'lowercase',
-                'email:rfc,dns,spoof',
+                'required_without:phone', 'string', 'max:255',
+                'lowercase', 'email:rfc,dns,spoof',
                 Rule::unique(User::class, 'email'),
             ],
             'phone' => [
                 'required_without:email',
-                'string',
+                'string', 'max:255',
                 Rule::unique(User::class, 'phone'),
             ],
             'password' => [
