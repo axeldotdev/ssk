@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\CompanyInvitation;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Inertia;
 use Inertia\Response;
 
 class CompanyInvitationController extends Controller
@@ -16,7 +17,7 @@ class CompanyInvitationController extends Controller
         Company $company,
         CompanyInvitation $invitation,
     ): Response {
-        return inertia('Auth/CompanyInvitation', [
+        return Inertia::render('Auth/CompanyInvitation', [
             'company' => $company,
             'invitation' => $invitation,
         ]);

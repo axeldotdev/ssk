@@ -23,12 +23,12 @@ The main goal of SSK is to help you (and me) build app quickly and it brings a t
 
 But my other goal is to use it as a storage for all the class, enums, traits, configs and other stuff that I use in every app I work on. And I hope it will be usefull for you too like a big Gist.
 
-If you would like a Livewire version, let's connect on Twitter. If a lot of people are interested I could make some time for it.
+You can also use the [Livewire version here](https://github.com/axeldotdev/ssk-livewire).
 
 ## Installation
 
 ```bash
-git clone XXX your-project-name
+git clone git@github.com:axeldotdev/ssk.git your-project-name
 cd your-project-name
 composer install
 cp .env.example .env
