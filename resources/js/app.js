@@ -9,6 +9,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy'
 import { driver } from "driver.js"
 import "driver.js/dist/driver.css"
 import {install} from '@github/hotkey'
+import * as Sentry from "@sentry/vue";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
@@ -41,6 +42,10 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+Sentry.init({
+    dsn: import.meta.env.VITE_SENTRY_DSN_PUBLIC,
+  });
 
 const driverInstance = driver();
 

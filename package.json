@@ -26,6 +26,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@sentry/vue": "^7.40.0",
         "@vueuse/core": "^10.10.0",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",

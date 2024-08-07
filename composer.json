@@ -42,6 +42,7 @@
         "saloonphp/pagination-plugin": "^2.0",
         "saloonphp/rate-limit-plugin": "^2.0",
         "saloonphp/saloon": "^3.0",
+        "sentry/sentry-laravel": "^4.7",
         "socialiteproviders/microsoft": "^4.3",
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-activitylog": "^4.8",

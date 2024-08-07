@@ -7,6 +7,7 @@ use App\Http\Middleware\EnsureUserIsVerified;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Sentry\Laravel\Integration;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -30,5 +31,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'localized' => EnsureUserIsLocalized::class,
         ]);
     })
-    ->withExceptions(function (Exceptions $exceptions) {})
+    ->withExceptions(function (Exceptions $exceptions) {
+        Integration::handles($exceptions);
+    })
     ->create();
