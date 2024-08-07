@@ -2,6 +2,7 @@
 import { Link, usePage, router } from '@inertiajs/vue3';
 
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
+import AuthenticatedLayoutBreadcumb from '@/components/Layout/AuthenticatedLayoutBreadcumb.vue';
 import {
     Search,
     LayoutDashboard,
@@ -136,6 +137,7 @@ const isCurrentRoute = (route) => currentRoute === route
 
         <main class="w-full h-full overflow-y-auto overflow-x-hidden">
             <div class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+                <AuthenticatedLayoutBreadcumb />
                 <slot />
             </div>
         </main>

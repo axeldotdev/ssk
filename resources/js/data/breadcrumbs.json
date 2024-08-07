@@ -1,0 +1,22 @@
+{
+    "profile.edit": [
+        [
+            {
+                "title": "My account",
+                "link": null
+            },
+            {
+                "title": "My company",
+                "link": "company.edit"
+            },
+            {
+                "title": "API tokens",
+                "link": "tokens.index"
+            },
+            {
+                "title": "API documentation",
+                "link": null
+            }
+        ]
+    ]
+}
