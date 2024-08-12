@@ -13807,16 +13807,16 @@
         },
         {
             "name": "jonpurvis/lawman",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JonPurvis/lawman.git",
-                "reference": "6d47ed2449d482da62f78afb9866941554513930"
+                "reference": "c890b700566d16ff43bef51e00c96356ec03b992"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JonPurvis/lawman/zipball/6d47ed2449d482da62f78afb9866941554513930",
-                "reference": "6d47ed2449d482da62f78afb9866941554513930",
+                "url": "https://api.github.com/repos/JonPurvis/lawman/zipball/c890b700566d16ff43bef51e00c96356ec03b992",
+                "reference": "c890b700566d16ff43bef51e00c96356ec03b992",
                 "shasum": ""
             },
             "require": {
@@ -13858,9 +13858,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JonPurvis/lawman/issues",
-                "source": "https://github.com/JonPurvis/lawman/tree/v1.1.1"
+                "source": "https://github.com/JonPurvis/lawman/tree/v1.2.0"
             },
-            "time": "2024-07-26T23:32:05+00:00"
+            "time": "2024-08-10T19:39:58+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -17689,16 +17689,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "5.0.1",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "2db5010a484d53ebf536087a70b4a5423c102372"
+                "reference": "2d3e04c3b4c1e84a5e7382221ad8883c8fbc4f53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/2db5010a484d53ebf536087a70b4a5423c102372",
-                "reference": "2db5010a484d53ebf536087a70b4a5423c102372",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/2d3e04c3b4c1e84a5e7382221ad8883c8fbc4f53",
+                "reference": "2d3e04c3b4c1e84a5e7382221ad8883c8fbc4f53",
                 "shasum": ""
             },
             "require": {
@@ -17709,7 +17709,7 @@
                 "sebastian/exporter": "^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^10.3"
+                "phpunit/phpunit": "^10.4"
             },
             "type": "library",
             "extra": {
@@ -17754,7 +17754,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
                 "security": "https://github.com/sebastianbergmann/comparator/security/policy",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/5.0.1"
+                "source": "https://github.com/sebastianbergmann/comparator/tree/5.0.2"
             },
             "funding": [
                 {
@@ -17762,7 +17762,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-14T13:18:12+00:00"
+            "time": "2024-08-12T06:03:08+00:00"
         },
         {
             "name": "sebastian/complexity",
