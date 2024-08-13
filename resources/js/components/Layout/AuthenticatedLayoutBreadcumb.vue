@@ -3,6 +3,8 @@ import { ChevronDown } from 'lucide-vue-next'
 import { Link, usePage, router } from '@inertiajs/vue3';
 import breadcrumb from '@/data/breadcrumbs.json'
 
+import Breadcrumb from '@/components/Breadcrumb.vue'
+
 import {
     BreadcrumbItem,
     BreadcrumbPage,
@@ -20,6 +22,12 @@ const currentRoute = usePage().props.ziggy.currentRoute
 const currentBreadcrumb = computed(() => {
     return breadcrumb[currentRoute] ?? []
 })
+
+const filterArray = function (array) {
+    let newArray = [...array]
+    newArray.shift()
+    return newArray
+}
 </script>
 
 <template>
@@ -33,8 +41,8 @@ const currentBreadcrumb = computed(() => {
                     <ChevronDown class="h-4 w-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
-                    <DropdownMenuItem as-child v-for="(subitem, subindex) in item" v-if="subindex == 0">
-                        <Link :href="route(subitem.Link)">
+                    <DropdownMenuItem as-child v-for="(subitem, subindex) in filterArray(item)" :key="subindex">
+                        <Link :href="route(subitem.link)">
                         {{ $t(subitem.title) }}
                         </Link>
                     </DropdownMenuItem>

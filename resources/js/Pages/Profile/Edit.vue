@@ -43,35 +43,6 @@ defineProps({
     <Head :title="$t('My account')"/>
 
     <AuthenticatedLayout>
-        <Breadcrumb>
-            <BreadcrumbItem>
-                <DropdownMenu>
-                    <DropdownMenuTrigger class="flex items-center gap-1">
-                        <BreadcrumbPage>
-                            {{ $t('My account') }}
-                        </BreadcrumbPage>
-                        <ChevronDown class="h-4 w-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start">
-                        <DropdownMenuItem as-child>
-                            <Link :href="route('company.edit')">
-                                {{ $t('My company') }}
-                            </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem as-child>
-                            <Link :href="route('tokens.index')">
-                                {{ $t('API tokens') }}
-                            </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem as-child>
-                            <Link :href="route('documentation', { firstLevel: 'get-started'})">
-                                {{ $t('API documentation') }}
-                            </Link>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </BreadcrumbItem>
-        </Breadcrumb>
 
         <Header>
             {{ $t('My account') }}
