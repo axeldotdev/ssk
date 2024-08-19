@@ -353,25 +353,28 @@
         },
         {
             "name": "clue/redis-protocol",
-            "version": "v0.3.1",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/redis-protocol.git",
-                "reference": "271b8009887209d930f613ad3b9518f94bd6b51c"
+                "reference": "6f565332f5531b7722d1e9c445314b91862f6d6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/redis-protocol/zipball/271b8009887209d930f613ad3b9518f94bd6b51c",
-                "reference": "271b8009887209d930f613ad3b9518f94bd6b51c",
+                "url": "https://api.github.com/repos/clue/redis-protocol/zipball/6f565332f5531b7722d1e9c445314b91862f6d6c",
+                "reference": "6f565332f5531b7722d1e9c445314b91862f6d6c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^9.6 || ^5.7 || ^4.8.36"
+            },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Clue\\Redis\\Protocol": "src"
+                "psr-4": {
+                    "Clue\\Redis\\Protocol\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -384,20 +387,31 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "A streaming redis wire protocol parser and serializer implementation in PHP",
-            "homepage": "https://github.com/clue/php-redis-protocol",
+            "description": "A streaming Redis protocol (RESP) parser and serializer written in pure PHP.",
+            "homepage": "https://github.com/clue/redis-protocol",
             "keywords": [
                 "parser",
                 "protocol",
                 "redis",
+                "resp",
                 "serializer",
                 "streaming"
             ],
             "support": {
                 "issues": "https://github.com/clue/redis-protocol/issues",
-                "source": "https://github.com/clue/redis-protocol/tree/v0.3.1"
+                "source": "https://github.com/clue/redis-protocol/tree/v0.3.2"
             },
-            "time": "2017-06-06T16:07:10+00:00"
+            "funding": [
+                {
+                    "url": "https://clue.engineering/support",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/clue",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-07T11:06:28+00:00"
         },
         {
             "name": "clue/redis-react",
@@ -3471,16 +3485,16 @@
         },
         {
             "name": "laravel/reverb",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/reverb.git",
-                "reference": "15e192405d39ce66a845e56ccefc207cd73c3429"
+                "reference": "f24dda9de689395e83f3eab9aafa134d08222c2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/reverb/zipball/15e192405d39ce66a845e56ccefc207cd73c3429",
-                "reference": "15e192405d39ce66a845e56ccefc207cd73c3429",
+                "url": "https://api.github.com/repos/laravel/reverb/zipball/f24dda9de689395e83f3eab9aafa134d08222c2b",
+                "reference": "f24dda9de689395e83f3eab9aafa134d08222c2b",
                 "shasum": ""
             },
             "require": {
@@ -3547,9 +3561,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/reverb/issues",
-                "source": "https://github.com/laravel/reverb/tree/v1.0.0"
+                "source": "https://github.com/laravel/reverb/tree/v1.1.0"
             },
-            "time": "2024-07-02T19:11:48+00:00"
+            "time": "2024-08-06T13:45:39+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -4027,16 +4041,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.5.1",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "ac815920de0eff6de947eac0a6a94e5ed0fb147c"
+                "reference": "b650144166dfa7703e62a22e493b853b58d874b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/ac815920de0eff6de947eac0a6a94e5ed0fb147c",
-                "reference": "ac815920de0eff6de947eac0a6a94e5ed0fb147c",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/b650144166dfa7703e62a22e493b853b58d874b0",
+                "reference": "b650144166dfa7703e62a22e493b853b58d874b0",
                 "shasum": ""
             },
             "require": {
@@ -4049,8 +4063,8 @@
             },
             "require-dev": {
                 "cebe/markdown": "^1.0",
-                "commonmark/cmark": "0.31.0",
-                "commonmark/commonmark.js": "0.31.0",
+                "commonmark/cmark": "0.31.1",
+                "commonmark/commonmark.js": "0.31.1",
                 "composer/package-versions-deprecated": "^1.8",
                 "embed/embed": "^4.4",
                 "erusev/parsedown": "^1.0",
@@ -4129,7 +4143,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-24T12:52:09+00:00"
+            "time": "2024-08-16T11:46:16+00:00"
         },
         {
             "name": "league/config",
@@ -5066,16 +5080,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.7.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "cb4374784c87d0a0294e8513a52eb63c0aff3139"
+                "reference": "bbd3eef89af8ba66a3aa7952b5439168fbcc529f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cb4374784c87d0a0294e8513a52eb63c0aff3139",
-                "reference": "cb4374784c87d0a0294e8513a52eb63c0aff3139",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bbd3eef89af8ba66a3aa7952b5439168fbcc529f",
+                "reference": "bbd3eef89af8ba66a3aa7952b5439168fbcc529f",
                 "shasum": ""
             },
             "require": {
@@ -5168,7 +5182,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-16T22:29:20+00:00"
+            "time": "2024-08-19T06:22:39+00:00"
         },
         {
             "name": "nette/schema",
@@ -19445,9 +19459,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "laravel/reverb": 10
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
