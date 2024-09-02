@@ -56,7 +56,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.23",
-        "jonpurvis/lawman": "^1.0",
+        "jonpurvis/lawman": "^2.0",
         "larastan/larastan": "^2.9",
         "laravel-lang/common": "^6.2",
         "laravel/breeze": "^2.0",
